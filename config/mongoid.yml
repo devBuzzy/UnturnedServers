@@ -1,0 +1,12 @@
+development:
+  sessions:
+    default:
+      database: <%= Rails.application.class.to_s.split("::").first %>
+      hosts:
+        - pvp.jake0oo0.me:27017
+production:
+  sessions:
+    default:
+      database: <%= Rails.application.class.to_s.split("::").first %>
+      hosts:
+        - localhost:27017
