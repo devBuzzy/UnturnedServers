@@ -1,0 +1,23 @@
+.page-header
+  %h1 Login
+= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  = devise_error_messages!
+  .row
+    .col-md-8
+      %p
+        = f.label :login
+        %br/
+        = f.text_field :login, autofocus: true, class: 'form-control', style: 'width: 40%'
+      %p
+        = f.label :password
+        %br/
+        = f.password_field :password, autocomplete: "off", class: 'form-control', style: 'width: 30%'
+      - if devise_mapping.rememberable?
+        %div
+          = f.check_box :remember_me
+          = f.label :remember_me
+      %div= f.submit "Login", class: 'btn btn-primary'
+    .col-md-4
+      %ul.nav.nav-pills.nav-stacked
+        %li= link_to 'Register', new_user_registration_path
+        %li= link_to 'Home', root_path

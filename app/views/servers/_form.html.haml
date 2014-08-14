@@ -1,0 +1,66 @@
+= form_for(@server) do |f|
+  = render 'partials/errors', object: @server
+  .row
+    .col-md-4
+      %h2 Connection Details
+      %hr
+      %p
+        = f.label :title
+        %br/
+        = f.text_field :title, class: 'form-control'
+      %p
+        = f.label :ip, 'IP Address'
+        %br/
+        = f.text_field :ip, class: 'form-control', placeholder: "External Server IP"
+      %p
+        = f.label :port
+        %br/
+        = f.text_field :port, class: 'form-control', value: 25444
+      %p
+        = f.label :location
+        %br/
+        = f.select :location, options_for_select([["North America", "north-america"], ["South America", "south-america"], ["Europe", "europe"], ["Asia", "asia"]]), {}, class: "form-control"
+    .col-md-4
+      %h2 Server Settings
+      %hr
+      %p
+        = f.label :sync, "Sync?"
+        %br/
+        = f.select :sync, options_for_select([["Yes", true], ["No", false]]), {}, class: "form-control"
+      %p
+        = f.label :gold, "Gold?"
+        %br/
+        = f.select :gold, options_for_select([["Yes", true], ["No", false]]), {}, class: "form-control"
+      %p
+        = f.label :pvp, "Pvp?"
+        %br/
+        = f.select :pvp, options_for_select([["Yes", true], ["No", false]]), {}, class: "form-control"
+    .col-md-4
+      %h2 More Settings
+      %hr
+      %p
+        = f.label :map
+        %br/
+        = f.select :map, options_for_select([["PEI", true]]), {}, class: "form-control"
+      %p
+        = f.label :version
+        %br/
+        = f.select :version, options_for_select([["2.2.4", "2.2.4"]]), {}, class: "form-control"
+      %p
+        = f.label :difficulty
+        %br/
+        = f.select :difficulty, options_for_select([["Bambi", "bambi"], ["Normal", "normal"], ["Hardcore", "hardcore"]]), {}, class: "form-control"
+  .row
+    .col-md-12
+      %h2 Extra Info
+      %hr
+      %p
+        = f.label :info, 'Description'
+        %br/
+        = f.text_area :info, class: 'form-control', :rows => "10", :cols => "10", id: 'description'
+        .countdown
+      :javascript
+        countdown('#description', '.countdown', 1000)
+  .row
+    .col-md-12
+      = f.submit "Submit", class: "btn btn-primary"

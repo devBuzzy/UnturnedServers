@@ -1,0 +1,1 @@
+GITHUB = Github.new(oauth_token: '330320d0534e515f1197649cecf3b8f398392576')

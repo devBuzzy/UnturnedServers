@@ -1,0 +1,34 @@
+.page-header
+  - if current_user
+    .pull-right
+      = link_to 'New Server', new_server_path, class: 'btn btn-primary'
+  %h1 Server Listings
+
+%table.table
+  %thead
+    %tr
+      %th Version
+      %th Name
+      %th Owner
+      %th PvP?
+      %th Gold?
+      %th Difficulty
+      %th Sync?
+      %th Map
+      %th IP Address
+      %th Port
+      %th
+  %tbody
+    - @servers.each do |server|
+      %tr
+        %td= server.version
+        %td= server.title
+        %td= server.user.username
+        %td= server.pvp
+        %td= server.gold
+        %td= server.difficulty
+        %td= server.sync
+        %td= server.map
+        %td= server.ip
+        %td= server.port
+        %td= link_to 'View', server_path(server)

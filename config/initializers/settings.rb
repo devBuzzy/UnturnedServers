@@ -1,0 +1,1 @@
+REPOS = [{:name => 'UnturnedServers', :friendly => 'Unturned Servers'}]
