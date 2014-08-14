@@ -26,22 +26,22 @@
       %p
         = f.label :sync, "Sync?"
         %br/
-        = f.select :sync, options_for_select([["Yes", true], ["No", false]]), {}, class: "form-control"
+        = f.select :sync, options_for_select([["Sync", true], ["No Sync", false]]), {}, class: "form-control"
       %p
         = f.label :gold, "Gold?"
         %br/
-        = f.select :gold, options_for_select([["Yes", true], ["No", false]]), {}, class: "form-control"
+        = f.select :gold, options_for_select([["Default", false], ["Gold", true]]), {}, class: "form-control"
       %p
         = f.label :pvp, "Pvp?"
         %br/
-        = f.select :pvp, options_for_select([["Yes", true], ["No", false]]), {}, class: "form-control"
+        = f.select :pvp, options_for_select([["PvP", true], ["PvE", false]]), {}, class: "form-control"
     .col-md-4
       %h2 More Settings
       %hr
       %p
         = f.label :map
         %br/
-        = f.select :map, options_for_select([["PEI", true]]), {}, class: "form-control"
+        = f.select :map, options_for_select([["PEI", "P.E.I."]]), {}, class: "form-control"
       %p
         = f.label :version
         %br/

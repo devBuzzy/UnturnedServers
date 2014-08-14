@@ -14,3 +14,4 @@
 //= require jquery_ujs
 //= require_tree .
 //= require char_counter
+//= require jquery-tablesorter

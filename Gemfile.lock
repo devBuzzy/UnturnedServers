@@ -75,6 +75,8 @@ GEM
     jquery-rails (3.1.1)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-tablesorter (1.12.4)
+      railties (>= 3.1, < 5)
     json (1.8.1)
     jwt (1.0.0)
     kaminari (0.16.1)
@@ -174,6 +176,7 @@ DEPENDENCIES
   haml
   jbuilder (~> 1.2)
   jquery-rails
+  jquery-tablesorter
   kaminari
   mongoid
   rails (= 4.0.4)

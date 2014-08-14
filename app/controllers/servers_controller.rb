@@ -24,6 +24,12 @@ class ServersController < ApplicationController
   	end
   end
 
+  def destroy
+    @server = Server.find(params[:id])
+    @server.destroy
+    redirect_to servers_path
+  end
+
   private
   def server_params
   	params.require(:server).permit(:title, :ip, :port, :pvp, :info, :gold, :location, :version, :difficulty, :sync, :map)

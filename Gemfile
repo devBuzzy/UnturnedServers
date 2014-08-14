@@ -11,6 +11,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'github_api'
 gem 'kaminari'
+gem 'jquery-tablesorter'
 group :development do
 	gem 'better_errors'
 end

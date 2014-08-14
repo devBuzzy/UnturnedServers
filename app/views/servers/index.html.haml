@@ -4,31 +4,62 @@
       = link_to 'New Server', new_server_path, class: 'btn btn-primary'
   %h1 Server Listings
 
-%table.table
-  %thead
-    %tr
-      %th Version
-      %th Name
-      %th Owner
-      %th PvP?
-      %th Gold?
-      %th Difficulty
-      %th Sync?
-      %th Map
-      %th IP Address
-      %th Port
-      %th
-  %tbody
-    - @servers.each do |server|
+- unless @servers.size == 0
+  %table.table.tablesorter.tablesorter-bootstrap
+    %thead
       %tr
-        %td= server.version
-        %td= server.title
-        %td= server.user.username
-        %td= server.pvp
-        %td= server.gold
-        %td= server.difficulty
-        %td= server.sync
-        %td= server.map
-        %td= server.ip
-        %td= server.port
-        %td= link_to 'View', server_path(server)
+        %th Version
+        %th Name
+        %th Owner
+        %th PvP?
+        %th Gold?
+        %th Difficulty
+        %th Sync?
+        %th Map
+        %th IP Address
+        %th Port
+    %tbody
+      - @servers.each do |server|
+        %tr
+          %td
+            %span.label.label-primary.align= server.version
+          %td
+            = link_to server.title, server
+          %td
+            = server.user.username
+          %td.align
+            - if server.pvp
+              %span.label.label-danger.align PvP
+            - else
+              %span.label.label-success.align PvE
+          %td.align
+            - if server.gold
+              %span.label.label-warning.align Gold
+            - else
+              %span.label.label-danger.align Default
+          %td.align
+            - diff = server.difficulty
+            - if diff == "bambi"
+              %span.label.label-success.align Bambi
+            - elsif diff == "normal"
+              %span.label.label-warning.align Normal
+            - elsif diff == "hardcore"
+              %span.label.label-danger.align Hardcore
+          %td.align
+            - if server.sync
+              %span.label.label-success.align Sync
+            - else
+              %span.label.label-primary.align No Sync
+          %td
+            %span.label.label-primary.align= server.map.capitalize
+          %td{id: "server-ip"}
+            %a= server.ip
+            :javascript
+              $("#server-ip").click(function() {
+                prompt("Copy to clipboard: ", "#{server.ip}")
+              });
+          %td= server.port
+  :javascript
+    $(".tablesorter").tablesorter({
+      sortList: [[1,1]]
+    });
