@@ -10,6 +10,7 @@ gem 'haml'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'github_api'
+gem 'kaminari'
 group :development do
 	gem 'better_errors'
 end
