@@ -165,6 +165,21 @@
           var chart = new Chart(ctx).Line(data);
           chart.update();
   .row
+    .col-md-6
+    .col-md-6
+      %h2 
+        Share
+        %small 
+          Promote Your Server
+      %hr
+      %span.st_reddit_large{displaytext: "Reddit"}
+      %span.st__large{displaytext: ""}
+      %span.st_twitter_large{displaytext: "Tweet"}
+      %span.st_googleplus_large{displaytext: "Google +"}
+      %span.st_facebook_large{displaytext: "Facebook"}
+      %span.st_email_large{displaytext: "Email"}
+
+  .row
     .col-md-12
       %h2 Description
       %hr
@@ -196,3 +211,6 @@
   .btn-group{style: 'margin-top: 10px;'}
     %button.btn.btn-danger{type: "button"} Report
 
+%script{type: "text/javascript"}var switchTo5x=true;
+%script{type: "text/javascript", src: "http://w.sharethis.com/button/buttons.js"}
+%script{type:"text/javascript"} stLight.options({publisher: "c2e6e60e-c42d-4a9b-a6c5-0ca8e2f39a96", doNotHash: false, doNotCopy: false, hashAddressBar: true});
