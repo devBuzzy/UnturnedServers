@@ -1,0 +1,12 @@
+= form_for([@server, @server.comments.build]) do |f|
+  %p
+    %label Commenter:
+    %br/
+    %input{type: "text", class: "form-control", value: "#{current_user.email}", readonly: true, style: 'width: 30%'}
+  %p
+    %label Comment:
+    %br/
+    = f.text_area :text, cols: 20, rows:'10', style: 'width: 65%', class: "form-control"
+  = f.hidden_field :user, value: current_user.id
+  %p
+    = f.submit 'Submit', class: 'btn btn-primary', data: { disable_with: "Submitting..." }

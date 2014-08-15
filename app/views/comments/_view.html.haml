@@ -1,0 +1,8 @@
+- unless not @server.comments.any?
+	- @server.comments.select { | comment | comment.valid? }.each_with_index do |comment, index|
+		%h3
+			%small
+				= comment.user.username
+		= simple_format(comment.text)
+		- if @server.comments.size - 1 != index
+			%hr

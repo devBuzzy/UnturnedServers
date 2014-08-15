@@ -31,6 +31,7 @@ class Server
   field :slots, type: Integer, default: 8
 
   has_many :reports
+  has_many :comments
   belongs_to :user
 
 end
