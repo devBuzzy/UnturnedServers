@@ -29,6 +29,7 @@ body {
 
 .align {
 	vertical-align: middle;
+	text-align: center;
 	font-size: 16px;
 }
 

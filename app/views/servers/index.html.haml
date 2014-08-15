@@ -5,7 +5,7 @@
   %h1 Server Listings
 
 - unless @servers.size == 0
-  %table.table.tablesorter.tablesorter-bootstrap
+  %table.table.tablesorter.tablesorter-bootstrap.table-bordered
     %thead
       %tr
         %th Version
@@ -21,7 +21,7 @@
     %tbody
       - @servers.each do |server|
         %tr
-          %td
+          %td.align
             %span.label.label-primary.align= server.version
           %td
             = link_to server.title, server
@@ -50,12 +50,12 @@
               %span.label.label-success.align Sync
             - else
               %span.label.label-primary.align No Sync
-          %td
-            %span.label.label-primary.align= server.map.capitalize
-          %td{id: "server-ip"}
+          %td.align
+            %span.label.label-primary.align= server.map
+          %td{class: "server-ip-#{server.id}"}
             %a= server.ip
             :javascript
-              $("#server-ip").click(function() {
+              $(".server-ip-#{server.id}").click(function() {
                 prompt("Copy to clipboard: ", "#{server.ip}")
               });
           %td= server.port

@@ -9,8 +9,110 @@
         %li= link_to 'Delete', server_path(@server), method: :delete, data: {confirm: 'Are you sure you want to delete this server?'}
         %li= link_to 'Sponsor', new_server_path
   %h1= @server.title
-
-= simple_format(@server.info)
+.container
+  .row
+    .col-md-6
+      %h2 Server Information
+      %hr
+      %table.table.table-bordered
+        %tbody
+          %tr
+            %td 
+              .glyphicon.glyphicon-upload
+              IP Address
+            %td
+              %a{id: 'server-ip'}
+                = @server.ip
+              :javascript
+                $('#server-ip').click(function() {
+                  prompt("Copy to clipboard:", "#{@server.ip}")
+                });
+          %tr
+            %td
+              .glyphicon.glyphicon-download 
+              Port
+            %td= @server.port
+          %tr
+            %td 
+              %i.fa.fa-history
+              Version
+            %td
+              .label.label-primary= @server.version
+          %tr
+            %td 
+              %i.fa.fa-list-ol
+              Slots
+            %td= @server.slots
+          %tr
+            %td 
+              %i.fa.fa-exchange
+              Sync
+            %td
+              - if @server.sync
+                .label.label-success Enabled
+              - else
+                .label.label-danger Disabled
+          %tr
+            %td 
+              %i.fa.fa-usd
+              Gold
+            %td
+              - if @server.gold
+                .label.label-warning Gold
+              - else
+                .label.label-danger Default
+          %tr
+            %td 
+              %i.fa.fa-bars
+              Difficulty
+            %td
+              - diff = @server.difficulty
+              - if diff == "bambi"
+                .label.label-success Bambi
+              - elsif diff == "normal"
+                .label.label-danger Normal
+              - elsif diff == "hardcore"
+                .label.label-danger Hardcore
+          %tr
+            %td 
+              %i.fa.fa-compass
+              Map
+            %td
+              .label.label-primary= @server.map
+          %tr
+            %td 
+              %i.fa.fa-fighter-jet
+              PvP
+            %td
+              - if @server.pvp
+                .label.label-success Enabled
+              - else
+                .label.label-danger Disabled
+          %tr
+            %td 
+              %i.fa.fa-user
+              Owner
+            %td= @server.user.username
+          %tr
+            %td 
+              %i.fa.fa-calendar-o
+              Registered
+            %td
+              .label.label-default= time_ago_in_words(@server.created_at) + ' ago'
+          %tr
+            %td
+              %i.fa.fa-calendar
+              Updated
+            %td
+              .label.label-default= time_ago_in_words(@server.updated_at) + ' ago'
+    .col-md-6
+      %h2 Statistics
+      %hr
+  .row
+    .col-md-12
+      %h2 Description
+      %hr
+      = simple_format(@server.info)
 
 .text-center
   .btn-group{style: 'margin-top: 10px;'}

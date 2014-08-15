@@ -14,6 +14,8 @@ class Server
   validates :difficulty, presence: true
   validates :sync, presence: true
   validates :map, presence: true
+  validates :slots, presence: true
+  validates_numericality_of :slots
 
   field :title, type: String
   field :ip, type: String
@@ -26,6 +28,7 @@ class Server
   field :difficulty, type: String
   field :sync, type: Boolean
   field :map, type: String
+  field :slots, type: Integer, default: 8
 
   has_many :reports
   belongs_to :user
