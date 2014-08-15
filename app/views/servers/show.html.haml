@@ -139,6 +139,7 @@
               Views
             %td 0
       .text-center
+        %h3 Voting History
         %canvas{id: 'vote-chart', height: "350"}
         - today = Time.now
         :javascript
@@ -150,14 +151,14 @@
               labels: ["#{(today - 6.day).strftime("%A")}", "#{(today - 5.day).strftime("%A")}", "#{(today - 4.day).strftime("%A")}", "#{(today - 3.day).strftime("%A")}", "#{(today - 2.day).strftime("%A")}", "#{(today - 1.day).strftime("%A")}", "#{today.strftime("%A")}"],
               datasets: [
                   {
-                      label: "My Second dataset",
+                      label: "Vote Data",
                       fillColor: "rgba(151,187,205,0.2)",
                       strokeColor: "rgba(151,187,205,1)",
                       pointColor: "rgba(151,187,205,1)",
                       pointStrokeColor: "#fff",
                       pointHighlightFill: "#fff",
                       pointHighlightStroke: "rgba(151,187,205,1)",
-                      data: ["#{@server.votes.where('created_at between ? and ?, (Time.now - 6.day).at_beginning_of_day, (Time.now - 6.day).at_end_of_day)'}", 48, 40, 19, 86, 27, 90]
+                      data: [#{get_time(@server, 6)}, #{get_time(@server, 5)}, #{get_time(@server, 4)}, #{get_time(@server, 3)}, #{get_time(@server, 2)}, #{get_time(@server, 1)}, #{get_time(@server, 0)}]
                   }
               ]
           };
