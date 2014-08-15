@@ -118,7 +118,7 @@
               Updated
             %td
               .label.label-default= time_ago_in_words(@server.updated_at) + ' ago'
-    .col-md-6
+    .col-md-6{id: "stats-col"}
       %h2 Statistics
       %hr
       %table.table.table-bordered
@@ -138,11 +138,31 @@
               %i.fa.fa-eye
               Views
             %td 0
-      %ul{"data-votes-id" => "vote-chart"}
-        %li
-      .div{id: 'vote-chart'}
-      :javascript
-        Pizza.init();
+      .text-center
+        %canvas{id: 'vote-chart', height: "350"}
+        - today = Time.now
+        :javascript
+          var width = $("#stats-col").width();
+          var canvas = document.getElementById("vote-chart");
+          var ctx = canvas.getContext("2d");
+          ctx.canvas.width = width;
+          var data = {
+              labels: ["#{(today - 6.day).strftime("%A")}", "#{(today - 5.day).strftime("%A")}", "#{(today - 4.day).strftime("%A")}", "#{(today - 3.day).strftime("%A")}", "#{(today - 2.day).strftime("%A")}", "#{(today - 1.day).strftime("%A")}", "#{today.strftime("%A")}"],
+              datasets: [
+                  {
+                      label: "My Second dataset",
+                      fillColor: "rgba(151,187,205,0.2)",
+                      strokeColor: "rgba(151,187,205,1)",
+                      pointColor: "rgba(151,187,205,1)",
+                      pointStrokeColor: "#fff",
+                      pointHighlightFill: "#fff",
+                      pointHighlightStroke: "rgba(151,187,205,1)",
+                      data: ["#{@server.votes.where('created_at between ? and ?, (Time.now - 6.day).at_beginning_of_day, (Time.now - 6.day).at_end_of_day)'}", 48, 40, 19, 86, 27, 90]
+                  }
+              ]
+          };
+          var chart = new Chart(ctx).Line(data);
+          chart.update();
   .row
     .col-md-12
       %h2 Description
