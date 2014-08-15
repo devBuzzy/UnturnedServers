@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
 //= require char_counter
 //= require jquery-tablesorter
+//= require pizza
+//= require snap.svg.js
+//= require_tree .

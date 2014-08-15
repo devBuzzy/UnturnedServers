@@ -17,7 +17,7 @@
           %button.btn.btn-danger
             %i.fa.fa-heart
             Favorite
-          %button.btn.btn-success
+          %a.btn.btn-success{href: "#{server_vote_path(@server)}"}
             %i.fa.fa-thumbs-up
             Vote
           %button.btn.btn-danger
@@ -132,12 +132,17 @@
             %td 
               %i.fa.fa-thumbs-up
               Votes
-            %td 0
+            %td= @server.votes.size
           %tr
             %td 
               %i.fa.fa-eye
               Views
             %td 0
+      %ul{"data-votes-id" => "vote-chart"}
+        %li
+      .div{id: 'vote-chart'}
+      :javascript
+        Pizza.init();
   .row
     .col-md-12
       %h2 Description

@@ -29,6 +29,7 @@ class User
   has_many :servers
   has_many :reports
   has_many :comments
+  has_many :votes
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
