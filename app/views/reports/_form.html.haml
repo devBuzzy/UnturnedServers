@@ -2,17 +2,18 @@
   = render 'partials/errors', object: @server
   .row
     .col-md-12
-      %h2 Server Details
       %p
         %label Reporting:
         %br/
         %input{type: "text", class: "form-control", value: "#{@server.title}", readonly: true, style: 'width: 30%'}
   .row
     .col-md-12
-      %label Evidence / Reasoning
-      %br/
-      = f.text_area :reason, class: 'form-control', :rows => "10", :cols => "10", id: 'description'
+      %p
+        %label Evidence / Reasoning
+        %br/
+        = f.text_area :reason, class: 'form-control', :rows => "10", :cols => "10", id: 'description', style: 'width: 45%'
   .row  
     .col-md-12
-      = f.submit "Submit", class: "btn btn-primary" 
+      %p
+        = f.submit "Submit", class: "btn btn-primary" 
   
