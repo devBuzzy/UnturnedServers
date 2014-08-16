@@ -37,9 +37,11 @@ class ServersController < ApplicationController
   end
 
   def cast_vote
+    @server = Server.find(params[:server_id])
+    puts @server.votes.where(created_at: (Time.now..(Time.now - 24.hour)))
+    return redirect_to @server, :alert => 'You can only vote once every 24 hours.' if @server.votes.where(created_at: ((Time.now - 24.hour) ..(Time.now))).where(user: current_user).any?
     captcha = params['form']['captcha']
     return redirect_to @server if captcha != 'zombie'
-    @server = Server.find(params[:server_id])
     @vote = Vote.create(:server => @server, :user => current_user)
     return redirect_to @server, :notice => 'Successfully voted.'
   end

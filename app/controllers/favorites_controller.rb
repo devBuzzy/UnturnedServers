@@ -8,9 +8,15 @@ class FavoritesController < ApplicationController
     redirect_to @server, :notice => 'Added server to favorites.'
   end
 
-  def destroy
-    return redirect_to @server if not current_user.has_favored(@server)
+  def show
     @server = Server.find(params[:server_id])
+    @favorite = @server.favorites.find(params[:favorite_id])
+    return redirect_to @server
+  end
+
+  def destroy
+    @server = Server.find(params[:server_id])
+    return redirect_to @server, :alert => 'You have not favorited this server yet.' if not current_user.has_favored(@server)
     @favorite = Favorite.find(params[:id])
     @favorite.destroy
     redirect_to @server
