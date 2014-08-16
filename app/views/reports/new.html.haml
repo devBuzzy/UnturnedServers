@@ -3,4 +3,7 @@
   %h1 
     Reporting:
     %small= @server.title
+    .pull-right
+      .btn-group
+        = link_to 'Cancel', @server, class: 'btn btn-danger'
 = render 'form'

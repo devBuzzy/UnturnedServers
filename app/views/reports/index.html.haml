@@ -3,6 +3,9 @@
   %h1 
     Reports for:
     %small= @server.title
+    .pull-right
+      .btn-group
+        = link_to 'Back', @server, class: 'btn btn-danger'
 %table.table.table-bordered.table-striped
   %thead
     %tr

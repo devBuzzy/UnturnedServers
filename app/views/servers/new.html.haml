@@ -1,5 +1,9 @@
 - content_for :title do 'New Server' end
 .page-header
-  %h1 New Server
+  %h1 
+    New Server
+    .pull-right
+      .btn-group
+        = link_to 'Cancel', servers_path, class: 'btn btn-danger'
 
 = render 'form'

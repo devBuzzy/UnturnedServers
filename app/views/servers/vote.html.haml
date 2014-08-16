@@ -4,6 +4,9 @@
     Voting for:
     %small
       = @server.title
+    .pull-right
+      .btn-group
+        = link_to 'Back', @server, class: 'btn btn-danger'
 
 = form_tag server_cast_vote_path(@server), method: 'post' do
   %p

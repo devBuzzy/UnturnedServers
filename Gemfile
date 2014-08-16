@@ -21,4 +21,3 @@ group :doc do
 end
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'bcrypt-ruby', '~> 3.0.0'
-
