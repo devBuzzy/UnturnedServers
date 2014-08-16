@@ -33,6 +33,7 @@ class Server
   has_many :reports
   has_many :comments
   has_many :votes
+  has_many :favorites
   belongs_to :user
 
 end

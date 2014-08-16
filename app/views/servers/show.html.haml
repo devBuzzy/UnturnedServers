@@ -15,10 +15,11 @@
     .col-md-12
       .div.text-center
         .btn-group
-          %button.btn.btn-danger
-            %i.fa.fa-heart
-            Favorite
-          %a.btn.btn-success{href: "#{server_vote_path(@server)}"}
+          - if current_user and current_user.has_favored(@server)
+            = link_to '<i class="fa fa-heart"></i> Unfavor'.html_safe, server_favorite_path(@server, current_user.favorite_for(@server)), class: 'btn btn-danger', method: :delete
+          - else
+            = link_to '<i class="fa fa-heart"></i> Favorite'.html_safe, new_server_favorite_path(@server), class: 'btn btn-danger'
+          %a.btn.btn-success{href: server_vote_path(@server)}
             %i.fa.fa-thumbs-up
             Vote
           %a.btn.btn-danger{href: new_server_report_path(@server)}

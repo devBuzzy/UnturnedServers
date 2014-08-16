@@ -15,7 +15,7 @@ class ReportsController < ApplicationController
     @server = Server.find(params[:server_id])
     @report = @server.reports.create(report_params)
     current_user.reports << @report
-    if @server.save
+    if @report.save
       return redirect_to @server, :notice => 'Successfully created report.'
     else
       render 'edit'

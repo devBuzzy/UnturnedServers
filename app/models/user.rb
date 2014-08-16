@@ -30,6 +30,7 @@ class User
   has_many :reports
   has_many :comments
   has_many :votes
+  has_many :favorites
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
@@ -38,5 +39,23 @@ class User
     else
       super
     end
+  end
+
+  def has_favored(server)
+    self.favorites.each do |favorite|
+      if favorite.server.id == server.id
+        return true
+      end
+    end
+    return false
+  end
+
+  def favorite_for(server)
+    self.favorites.each do |favorite|
+      if favorite.server.id == server.id
+        return favorite
+      end
+    end
+    return nil
   end
 end
