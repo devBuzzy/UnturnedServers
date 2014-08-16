@@ -1,3 +1,8 @@
+- content_for :title do "Reports for #{@server.title}" end
+.page-header
+  %h1 
+    Reports for:
+    %small= @server.title
 %table.table.table-bordered.table-striped
   %thead
     %tr

@@ -28,7 +28,8 @@ class ReportsController < ApplicationController
   end
 
   def index
-    @reports = Report.all
+    @server = Server.find(params[:server_id])
+    @reports = Report.where(:server => @server)
   end
 
   private
