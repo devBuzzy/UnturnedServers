@@ -19,7 +19,7 @@
       %p
         = f.label :location
         %br/
-        = f.select :location, options_for_select([["North America", "north-america"], ["South America", "south-america"], ["Europe", "europe"], ["Asia", "asia"]]), {}, class: "form-control"
+        = f.select :location, options_for_select([["North America", "north-america"], ["South America", "south-america"], ["Europe", "europe"], ["Asia", "asia"], ["Australia", "australia"], ["Africa", "africa"]]), {}, class: "form-control"
     .col-md-4
       %h2 Server Settings
       %hr
@@ -32,20 +32,24 @@
         %br/
         = f.select :gold, options_for_select([["Default", false], ["Gold", true]]), {}, class: "form-control"
       %p
-        = f.label :pvp, "Pvp?"
+        = f.label :pvp, "PvP?"
         %br/
         = f.select :pvp, options_for_select([["PvP", true], ["PvE", false]]), {}, class: "form-control"
+      %p
+        = f.label :slots
+        %br/
+        = f.text_field :slots, class: 'form-control', value: 8
     .col-md-4
       %h2 More Settings
       %hr
       %p
         = f.label :map
         %br/
-        = f.select :map, options_for_select([["PEI", "P.E.I."]]), {}, class: "form-control"
+        = f.select :map, options_for_select([["P.E.I.", "P.E.I."]]), {}, class: "form-control"
       %p
         = f.label :version
         %br/
-        = f.select :version, options_for_select([["2.2.4", "2.2.4"]]), {}, class: "form-control"
+        = f.select :version, options_for_select([["2.2.4", "2.2.4"], ["2.2.5", "2.2.5"]]), {}, class: "form-control"
       %p
         = f.label :difficulty
         %br/
