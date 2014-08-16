@@ -110,6 +110,11 @@
               Owner
             %td= @server.user.username
           %tr
+            %td
+              %i.fa.location-arrow
+                Location
+            %td= @server.location.gsub('-', ' ').titleize
+          %tr
             %td 
               %i.fa.fa-calendar-o
               Registered
