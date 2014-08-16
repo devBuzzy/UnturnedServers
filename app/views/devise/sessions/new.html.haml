@@ -2,7 +2,7 @@
 .page-header
   %h1 Login
 = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  = devise_error_messages!
+  = render 'partials/errors', object: resource
   .row
     .col-md-8
       %p
