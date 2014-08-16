@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require jquery-tablesorter/theme.bootstrap
+ *= require bootstrap-wysihtml5
  */
 
 

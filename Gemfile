@@ -12,6 +12,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'github_api'
 gem 'kaminari'
 gem 'jquery-tablesorter'
+gem 'bootstrap-wysihtml5-rails'
 group :development do
 	gem 'better_errors'
 end

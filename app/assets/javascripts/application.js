@@ -15,4 +15,6 @@
 //= require char_counter
 //= require jquery-tablesorter
 //= require Chart
+//= require bootstrap-wysihtml5
+//= require wysihtml5
 //= require_tree .

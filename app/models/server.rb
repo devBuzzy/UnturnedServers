@@ -3,7 +3,7 @@ class Server
   include Mongoid::Timestamps
 
   validates :title, presence: true
-  validates :ip, presence: true
+  validates :ip, presence: true, uniqueness: true
   validates :port, presence: true
   validates_numericality_of :port
   validates :pvp, presence: true
