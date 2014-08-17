@@ -3,6 +3,16 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
   include ApplicationHelper
   
+  def contact
+    form = params[:contact]
+    username = form[:username]
+    email = form[:email]
+    question = form[:question]
+    return redirect_to root_path, notice: 'Please make sure to fill all fields.' if username == nil or email == nil or question == nil
+    UserMailer.contact(email, username, question).deliver
+    return redirect_to root_path, notice: 'Successfully submitted an inquiry.'
+  end
+
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation, :remember_me) }

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root "servers#index"
+  post '/contact', :to => "application#contact"
   resources :servers do
   	resources :comments
     resources :reports
