@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "webmaster@myapp.com"
+  default from: "noreply@jake0oo0.me"
 
   def send_mail(user)
     @user = user
