@@ -10,7 +10,7 @@ class User
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }, format: { with: /\A[a-zA-Z0-9]*\z/, message: "may only contain letters and numbers." }
 
-  field :email,              type: String, default: ""
+  field :email, type: String, default: ""
   field :username, type: String, default: ""
   field :encrypted_password, type: String, default: ""
 
