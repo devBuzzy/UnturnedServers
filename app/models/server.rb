@@ -3,6 +3,14 @@ class Server
   include Mongoid::Timestamps
   mount_uploader :banner, BannerUploader
 
+  validate :check_dimensions, :on => :create
+
+  def check_dimensions
+    if !banner_cache.nil? && !(banner.width == 468 && banner.height == 60)
+      errors.add :banner, "dimensions should be 468x60"
+    end
+  end
+
   validates :title, presence: true
   validates :ip, presence: true, uniqueness: true
   validates :port, presence: true

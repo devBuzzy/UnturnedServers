@@ -23,6 +23,34 @@
           %a.btn.btn-success{href: server_vote_path(@server)}
             %i.fa.fa-thumbs-up
             Vote
+          %button.btn.btn-primary{"data-target" => "#connect-modal", "data-toggle" => "modal"} 
+            %i.fa.fa-play
+            Connect
+          #connect-modal.modal.fade{:role => "dialog", :tabindex => "-1"}
+            .modal-dialog
+              .modal-content
+                .modal-header
+                  %button.close{"data-dismiss" => "modal", :type => "button"}
+                    %span{"aria-hidden" => "true"} ×
+                    %span.sr-only Close
+                  %h4.modal-title{style: 'text-align: left;'} Connecting
+                .modal-body{style: 'text-align: left;'}
+                  To connect to an Unturned Server follow these steps:
+                  %ol
+                    %li 
+                      Open 
+                      %a{href: "steam://rungameid/304930"} Unturned 
+                      and select Play.
+                    %li Click 'Connect.'
+                    %li 
+                      Set the port to 
+                      %strong '#{@server.port}'
+                    %li 
+                      Set the IP Address to 
+                      %strong '#{@server.ip}'
+                    %li Click 'Connect.'
+                .modal-footer
+                  %button.btn.btn-danger{"data-dismiss" => "modal", :type => "button"} Close
           %a.btn.btn-danger{href: new_server_report_path(@server)}
             %i.fa.fa-flag
             Report
@@ -186,12 +214,10 @@
         %small 
           Promote Your Server
       %hr
-      %span.st_reddit_large{displaytext: "Reddit"}
-      %span.st__large{displaytext: ""}
-      %span.st_twitter_large{displaytext: "Tweet"}
-      %span.st_googleplus_large{displaytext: "Google +"}
-      %span.st_facebook_large{displaytext: "Facebook"}
-      %span.st_email_large{displaytext: "Email"}
+      %span.st_facebook_large{:displaytext => "Facebook"}
+      %span.st_googleplus_large{:displaytext => "Google +"}
+      %span.st_twitter_large{:displaytext => "Tweet"}
+      %span.st_email_large{:displaytext => "Email"}
 
   .row
     .col-md-12
@@ -220,6 +246,8 @@
           }); 
       = render 'comments/view'
 
-%script{type: "text/javascript"}var switchTo5x=true;
-%script{type: "text/javascript", src: "http://w.sharethis.com/button/buttons.js"}
-%script{type:"text/javascript"} stLight.options({publisher: "c2e6e60e-c42d-4a9b-a6c5-0ca8e2f39a96", doNotHash: false, doNotCopy: false, hashAddressBar: true});
+:javascript
+  var switchTo5x=true;
+%script{:src => "http://w.sharethis.com/button/buttons.js", :type => "text/javascript"}
+:javascript
+  stLight.options({publisher: "c2e6e60e-c42d-4a9b-a6c5-0ca8e2f39a96", doNotHash: true, doNotCopy: true, hashAddressBar: false});
