@@ -17,7 +17,6 @@ class Server
   validates_numericality_of :port
   validates :pvp, presence: true
   validates :info, presence: true
-  validates :gold, presence: true
   validates :location, presence: true
   validates :version, presence: true
   validates :difficulty, presence: true
@@ -32,7 +31,6 @@ class Server
   field :port, type: Integer, default: 25544
   field :pvp, type: Boolean, default: true
   field :info, type: String, default: ""
-  field :gold, type: Boolean, default: false
   field :location, type: String, default: ""
   field :version, type: String, default: ""
   field :difficulty, type: String, default: ""

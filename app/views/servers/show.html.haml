@@ -104,15 +104,6 @@
                 .label.label-danger Disabled
           %tr
             %td 
-              %i.fa.fa-usd
-              Gold
-            %td.middle
-              - if @server.gold
-                .label.label-warning Gold
-              - else
-                .label.label-danger Default
-          %tr
-            %td 
               %i.fa.fa-bars
               Difficulty
             %td.middle
@@ -120,9 +111,11 @@
               - if diff == "bambi"
                 .label.label-success Bambi
               - elsif diff == "normal"
-                .label.label-danger Normal
+                .label.label-primary Normal
               - elsif diff == "hardcore"
                 .label.label-danger Hardcore
+              - elsif diff == "gold"
+                .label.label-warning Gold
           %tr
             %td 
               %i.fa.fa-compass

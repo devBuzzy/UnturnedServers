@@ -28,11 +28,7 @@
         %br/
         = f.select :sync, options_for_select([["Sync", true], ["No Sync", false]]), {}, class: "form-control"
       %p
-        = f.label :gold, "Gold?"
-        %br/
-        = f.select :gold, options_for_select([["Default", false], ["Gold", true]]), {}, class: "form-control"
-      %p
-        = f.label :pvp, "PvP?"
+        = f.label :pvp, "PvP/PvE?"
         %br/
         = f.select :pvp, options_for_select([["PvP", true], ["PvE", false]]), {}, class: "form-control"
       %p
@@ -53,7 +49,7 @@
       %p
         = f.label :difficulty
         %br/
-        = f.select :difficulty, options_for_select([["Bambi", "bambi"], ["Normal", "normal"], ["Hardcore", "hardcore"]]), {}, class: "form-control"
+        = f.select :difficulty, options_for_select([["Bambi", "bambi"], ["Normal", "normal"], ["Hardcore", "hardcore"]["Gold", "gold"]]), {}, class: "form-control"
   .row
     .col-md-12
       %h2 Server Banner

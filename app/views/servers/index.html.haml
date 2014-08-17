@@ -12,8 +12,7 @@
         %th Version
         %th Name
         %th Owner
-        %th PvP?
-        %th Gold?
+        %th PvP/PvE
         %th Difficulty
         %th Sync?
         %th Map
@@ -34,18 +33,15 @@
             - else
               %span.label.label-success.align PvE
           %td.align
-            - if server.gold
-              %span.label.label-warning.align Gold
-            - else
-              %span.label.label-danger.align Default
-          %td.align
             - diff = server.difficulty
             - if diff == "bambi"
               %span.label.label-success.align Bambi
             - elsif diff == "normal"
-              %span.label.label-warning.align Normal
+              %span.label.label-primary.align Normal
             - elsif diff == "hardcore"
               %span.label.label-danger.align Hardcore
+            - elsif diff == "gold"
+              %span.label.label-warning.align Hardcore
           %td.align
             - if server.sync
               %span.label.label-success.align Sync
