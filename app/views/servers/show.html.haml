@@ -27,6 +27,10 @@
             %i.fa.fa-flag
             Report
   .row
+    .col-md-12
+      .text-center
+        = image_tag server_banner_url(@server)
+  .row
     .col-md-6
       %h2 Server Information
       %hr
@@ -52,7 +56,7 @@
             %td 
               %i.fa.fa-history
               Version
-            %td
+            %td.middle
               .label.label-primary= @server.version
           %tr
             %td 
@@ -63,7 +67,7 @@
             %td 
               %i.fa.fa-exchange
               Sync
-            %td
+            %td.middle
               - if @server.sync
                 .label.label-success Enabled
               - else
@@ -72,7 +76,7 @@
             %td 
               %i.fa.fa-usd
               Gold
-            %td
+            %td.middle
               - if @server.gold
                 .label.label-warning Gold
               - else
@@ -81,7 +85,7 @@
             %td 
               %i.fa.fa-bars
               Difficulty
-            %td
+            %td.middle
               - diff = @server.difficulty
               - if diff == "bambi"
                 .label.label-success Bambi
@@ -93,13 +97,13 @@
             %td 
               %i.fa.fa-compass
               Map
-            %td
+            %td.middle
               .label.label-primary= @server.map
           %tr
             %td 
               %i.fa.fa-fighter-jet
               PvP
-            %td
+            %td.middle
               - if @server.pvp
                 .label.label-success Enabled
               - else
@@ -111,20 +115,20 @@
             %td= @server.user.username
           %tr
             %td
-              %i.fa.location-arrow
-                Location
+              %i.fa.fa-location-arrow
+              Location
             %td= @server.location.gsub('-', ' ').titleize
           %tr
             %td 
               %i.fa.fa-calendar-o
               Registered
-            %td
+            %td.middle
               .label.label-default= time_ago_in_words(@server.created_at) + ' ago'
           %tr
             %td
               %i.fa.fa-calendar
               Updated
-            %td
+            %td.middle
               .label.label-default= time_ago_in_words(@server.updated_at) + ' ago'
     .col-md-6{id: "stats-col"}
       %h2 Statistics
@@ -214,11 +218,6 @@
             $("#show-form").toggle("show"); 
           }); 
       = render 'comments/view'
-
-
-.text-center
-  .btn-group{style: 'margin-top: 10px;'}
-    %button.btn.btn-danger{type: "button"} Report
 
 %script{type: "text/javascript"}var switchTo5x=true;
 %script{type: "text/javascript", src: "http://w.sharethis.com/button/buttons.js"}

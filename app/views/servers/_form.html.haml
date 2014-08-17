@@ -56,6 +56,15 @@
         = f.select :difficulty, options_for_select([["Bambi", "bambi"], ["Normal", "normal"], ["Hardcore", "hardcore"]]), {}, class: "form-control"
   .row
     .col-md-12
+      %h2 Server Banner
+      %hr
+      %p
+        = f.label :banner
+        %br/
+        = f.file_field :banner
+        = f.hidden_field :banner_cache
+  .row
+    .col-md-12
       %h2 Extra Info
       %hr
       %p

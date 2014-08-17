@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     end
   	post :cast_vote
   	get :vote
+    get :banner
   end
   resources :revisions
   devise_for :users

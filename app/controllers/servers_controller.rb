@@ -46,9 +46,18 @@ class ServersController < ApplicationController
     return redirect_to @server, :notice => 'Successfully voted.'
   end
 
+  def banner
+    @server = Server.find(params[:server_id])
+    content = @server.banner.read
+    if stale?(etag: content, last_modified: @server.updated_at, public: true)
+      send_data content, type: @server.banner.file.content_type, disposition: "inline"
+      expires_in 0, public: true
+    end
+  end
+
   private
   def server_params
-  	params.require(:server).permit(:title, :ip, :port, :pvp, :info, :gold, :location, :version, :difficulty, :sync, :map)
+  	params.require(:server).permit(:banner, :banner_cache, :slots, :title, :ip, :port, :pvp, :info, :gold, :location, :version, :difficulty, :sync, :map)
   end
 
 end

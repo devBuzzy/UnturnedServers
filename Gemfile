@@ -13,6 +13,8 @@ gem 'github_api'
 gem 'kaminari'
 gem 'jquery-tablesorter'
 gem 'bootstrap-wysihtml5-rails'
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+gem 'mini_magick'
 group :development do
 	gem 'better_errors'
 end

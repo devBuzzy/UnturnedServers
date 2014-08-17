@@ -1,6 +1,7 @@
 class Server
   include Mongoid::Document
   include Mongoid::Timestamps
+  mount_uploader :banner, BannerUploader
 
   validates :title, presence: true
   validates :ip, presence: true, uniqueness: true
@@ -16,18 +17,19 @@ class Server
   validates :map, presence: true
   validates :slots, presence: true
   validates_numericality_of :slots
+  validates :banner, presence: true
 
-  field :title, type: String
-  field :ip, type: String
-  field :port, type: Integer
-  field :pvp, type: Boolean
-  field :info, type: String
-  field :gold, type: Boolean
-  field :location, type: String
-  field :version, type: String
-  field :difficulty, type: String
-  field :sync, type: Boolean
-  field :map, type: String
+  field :title, type: String, default: ""
+  field :ip, type: String, default: ""
+  field :port, type: Integer, default: 25544
+  field :pvp, type: Boolean, default: true
+  field :info, type: String, default: ""
+  field :gold, type: Boolean, default: false
+  field :location, type: String, default: ""
+  field :version, type: String, default: ""
+  field :difficulty, type: String, default: ""
+  field :sync, type: Boolean, default: true
+  field :map, type: String, default: ""
   field :slots, type: Integer, default: 8
 
   has_many :reports
