@@ -1,5 +1,5 @@
 require "bundler/capistrano"
-
+set :ping_url, "http://unturned.jake0oo0.me/ping"
 set :application, "UnturnedServers"
 
 set :scm, :git
@@ -31,5 +31,13 @@ namespace :config do
 	end
 end
 
+namespace :deploy do
+  task :ping do
+    system "curl --silent #{fetch(:ping_url)}"
+  end
+end
+
+
 after :deploy, "config:setup"
 after :deploy, "passenger:restart"
+after "passenger:restart", "deploy:ping"

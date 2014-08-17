@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   end
   resources :revisions
   devise_for :users
+  get 'ping' => proc {|env| [200, {}, []] }
 end
