@@ -29,7 +29,7 @@
         %tr
           %td.text-center{style: "width: 10%; vertical-align:middle;"}
             %strong= index
-          %td.text-center{style: "width: 15%; vertical-align: middle;"}
+          %td.text-center{style: "width: 15%; vertical-align: middle; font-size: 18px;"}
             %strong= link_to server.title, server_path(server), class: "server"
           %td{style: "width: 40%; vertical-align: middle;"}
             = link_to image_tag(server_banner_path(server)), server_path(server)
@@ -54,7 +54,7 @@
               %span.label.label-primary.align= server.map
               %span.label.label-primary.align{style: "vertical-align: middle;"}= server.version
           %td{style: "width: 15%; vertical-align: middle;", class: "server-ip-#{server.id}"}
-            %a{class: "server ip", href: "#", rel: "tooltip", title: "Click to copy to clipboard.", data: {placement: "top"}}
+            %a{class: "server ip", href: "#", style: "font-size: 18px;", rel: "tooltip", title: "Click to copy to clipboard.", data: {placement: "top"}}
               %strong= server.ip
             :javascript
               $(".server-ip-#{server.id}").click(function() {
