@@ -2,13 +2,18 @@ class Server
   include Mongoid::Document
   include Mongoid::Timestamps
   mount_uploader :banner, BannerUploader
-
+  before_save :update_vote_count
   validate :check_dimensions, :on => :create
+
 
   def check_dimensions
     if !banner_cache.nil? && !(banner.width == 468 && banner.height == 60)
       errors.add :banner, "dimensions should be 468x60"
     end
+  end
+
+  def update_vote_count
+    self.vote_count = self.votes.size
   end
 
   validates :title, presence: true
@@ -48,6 +53,7 @@ class Server
   has_many :reports, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :votes, dependent: :destroy
+  field :vote_count, type: Integer, default: 0
   has_many :favorites, dependent: :destroy
   belongs_to :user
 

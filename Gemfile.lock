@@ -64,6 +64,8 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.2.1)
+    faker (1.4.3)
+      i18n (~> 0.5)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
     github_api (0.12.1)
@@ -191,6 +193,7 @@ DEPENDENCIES
   capistrano (~> 2.15)
   carrierwave-mongoid
   devise
+  faker
   github_api
   haml
   jbuilder (~> 1.2)

@@ -1,8 +1,7 @@
 - content_for :title do 'Servers' end
 .page-header
-  - if current_user
-    .pull-right
-      = link_to 'New Server', new_server_path, class: 'btn btn-primary'
+  .pull-right
+    = link_to 'New Server', new_server_path, class: 'btn btn-primary'
   %h1 Server Listings
 
 - if @servers.any?
@@ -62,5 +61,6 @@
               var client = new ZeroClipboard(document.getElementById("clipboard-#{server.id}"));
           %td.align{style: "width: 5%; vertical-align: middle; font-size: 20px;"}
             %span.label.label-success Online
+  = paginate @servers
 - else
   #none No servers have been submitted yet.

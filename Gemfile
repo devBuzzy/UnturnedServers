@@ -17,6 +17,7 @@ gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'mini_magick'
 group :development do
 	gem 'better_errors'
+  gem 'faker'
 end
 group :doc do
   gem 'sdoc', require: false
