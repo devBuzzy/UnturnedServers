@@ -1,8 +1,9 @@
 class ReportsController < ApplicationController
-	before_filter :authenticate_user!, :except => [:index, :show]
+	before_filter :authenticate_user!
 
   def new
   	@server = Server.find(params[:server_id])
+    return redirect_to @server, :alert => 'You can not report your own server.' if current_user == @server.user
   	@report = @server.reports.new(:user => current_user)
   end
 
@@ -24,11 +25,13 @@ class ReportsController < ApplicationController
 
   def show
     @server = Server.find(params[:server_id])
+    return redirect_to @server, :alert => 'You do not have permission to view this report.' if !current_user.admin
     @reports = server.reports
   end
 
   def index
     @server = Server.find(params[:server_id])
+    return redirect_to @server, :alert => 'You do not have permission to view server reports.' if !current_user.admin
     @reports = Report.where(:server => @server)
   end
 

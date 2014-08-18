@@ -1,16 +1,17 @@
 - content_for :title do @server.title end
 .page-header
-  .pull-right
-    .btn-group 
-      %button.btn.btn-primary.dropdown-toggle{"data-toggle" => 'dropdown'}
-        Manage
-        %span.caret
-      %ul.dropdown-menu{role: "menu", id: "left-dropdown"}
-        %li= link_to 'Edit', edit_server_path(@server)
-        %li= link_to 'Delete', server_path(@server), method: :delete, data: {confirm: 'Are you sure you want to delete this server?'}
-        %li= link_to 'Reports', server_reports_path(@server)
-        %li
-          %a{:href => "#contact", "data-toggle" => 'modal'} Sponsor
+  - if can_manage(@server)
+    .pull-right
+      .btn-group 
+        %button.btn.btn-primary.dropdown-toggle{"data-toggle" => 'dropdown'}
+          Manage
+          %span.caret
+        %ul.dropdown-menu{role: "menu", id: "left-dropdown"}
+          %li= link_to 'Edit', edit_server_path(@server)
+          %li= link_to 'Delete', server_path(@server), method: :delete, data: {confirm: 'Are you sure you want to delete this server?'}
+          %li= link_to 'Reports', server_reports_path(@server)
+          %li
+            %a{:href => "#contact", "data-toggle" => 'modal'} Sponsor
   %h1= @server.title
 .container
   .row

@@ -3,7 +3,11 @@ class RevisionsController < ApplicationController
     if not Object.const_defined?('GITHUB')
       @revisions = Array.new
     else
-      @revisions = get_commits(params[:id])
+      begin
+        @revisions = get_commits(params[:id])
+      rescue
+        return redirect_to revision_path("UnturnedServers"), :alert => 'Revisions for that repository do not exist.'
+      end
     end
   	if not Object.const_defined?('REPOS')
       @repos = Array.new
