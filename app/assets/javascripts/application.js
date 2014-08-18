@@ -17,4 +17,7 @@
 //= require Chart
 //= require bootstrap-wysihtml5
 //= require wysihtml5
+//= require ZeroClipboard
 //= require_tree .
+
+ZeroClipboard.config( { swfPath: "http://localhost:3000/ZeroClipboard.swf" } );

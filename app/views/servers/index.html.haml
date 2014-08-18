@@ -55,12 +55,10 @@
               %span.label.label-primary.align{style: "vertical-align: middle;"}= server.version
           %td{style: "width: 15%; vertical-align: middle;", class: "server-ip-#{server.id}"}
             %a{class: "server ip", href: "#", style: "font-size: 18px;", rel: "tooltip", title: "Click to copy to clipboard.", data: {placement: "top"}}
-              %strong= server.ip
-            :javascript
-              $(".server-ip-#{server.id}").click(function() {
-                prompt("Copy to clipboard: ", "#{server.ip}");
-              });
+              %strong{id: "clipboard-#{server.id}", class: "clip_button", "data-clipboard-text" => "#{server.ip}"}= server.ip
             :javascript
               $(".ip").tooltip();
+            :javascript
+              var client = new ZeroClipboard(document.getElementById("clipboard-#{server.id}"));
           %td.align{style: "width: 5%; vertical-align: middle; font-size: 20px;"}
             %span.label.label-success Online
