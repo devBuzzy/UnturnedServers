@@ -25,6 +25,11 @@ a:visited.server { color: black; text-decoration: none; }
 a:hover.server { color: black; text-decoration: none; } 
 a:active.server { color: black; text-decoration: none; } 
 
+#none {
+  color: darkgray;
+  text-align: center;
+}
+
 .pagination {
 	margin: 0px;
 }

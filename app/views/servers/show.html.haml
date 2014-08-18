@@ -237,8 +237,10 @@
             } 
             $("#show-form").toggle("show"); 
           }); 
-      = render 'comments/view'
-
+      - if @server.comments.select { | comment | comment.valid? }.any?
+        = render 'comments/view'
+      - else
+        #none No comments have been posted yet.
 :javascript
   var switchTo5x=true;
 %script{:src => "http://w.sharethis.com/button/buttons.js", :type => "text/javascript"}
