@@ -54,7 +54,7 @@
               %span.label.label-primary.align= server.map
               %span.label.label-primary.align{style: "vertical-align: middle;"}= server.version
           %td{style: "width: 15%; vertical-align: middle;", class: "server-ip-#{server.id}"}
-            %a{class: "server ip", href: "#", style: "font-size: 18px;", rel: "tooltip", title: "Click to copy to clipboard.", data: {placement: "top"}}
+            %span{class: "ip", style: "font-size: 18px;", rel: "tooltip", title: "Click to copy to clipboard.", data: {placement: "top"}}
               %strong{id: "clipboard-#{server.id}", class: "clip_button", "data-clipboard-text" => "#{server.ip}"}= server.ip
             :javascript
               $(".ip").tooltip();
