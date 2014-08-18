@@ -71,12 +71,10 @@
               .glyphicon.glyphicon-upload
               IP Address
             %td
-              %a{id: 'server-ip'}
-                = @server.ip
+              %span{id: 'server-ip', "data-clipboard-text" => @server.ip, rel: "tooltip", title: "Click to copy to clipboard.", href: "#", data: {placement: "top"}}= @server.ip
               :javascript
-                $('#server-ip').click(function() {
-                  prompt("Copy to clipboard:", "#{@server.ip}")
-                });
+                var client = new ZeroClipboard(document.getElementById("server-ip"));
+                $("#server-ip").tooltip();
           %tr
             %td
               .glyphicon.glyphicon-download 
