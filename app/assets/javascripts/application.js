@@ -20,4 +20,4 @@
 //= require ZeroClipboard
 //= require_tree .
 
-ZeroClipboard.config( { swfPath: "http://localhost:3000/ZeroClipboard.swf" } );
+ZeroClipboard.config( { swfPath: "http://unturned.jake0oo0.me/ZeroClipboard.swf" } );
