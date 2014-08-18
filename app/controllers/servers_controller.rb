@@ -7,6 +7,7 @@ class ServersController < ApplicationController
 
   def show
   	@server = Server.find(params[:id])
+    return redirect_to servers_path, :alert => 'That server does not exist.' if @server == nil
   end
 
   def new
