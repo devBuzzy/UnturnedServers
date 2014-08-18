@@ -1,9 +1,9 @@
 = form_for(@server) do |f|
   = render 'partials/errors', object: @server
   .row
+    %h2 Server Information
+    %hr
     .col-md-4
-      %h2 Connection Details
-      %hr
       %p
         = f.label :title
         %br/
@@ -21,8 +21,6 @@
         %br/
         = f.select :location, options_for_select([["North America", "north-america"], ["South America", "south-america"], ["Europe", "europe"], ["Asia", "asia"], ["Australia", "australia"], ["Africa", "africa"]]), {}, class: "form-control"
     .col-md-4
-      %h2 Server Settings
-      %hr
       %p
         = f.label :sync, "Sync?"
         %br/
@@ -36,8 +34,6 @@
         %br/
         = f.text_field :slots, class: 'form-control', value: 8
     .col-md-4
-      %h2 More Settings
-      %hr
       %p
         = f.label :map
         %br/
@@ -50,6 +46,37 @@
         = f.label :difficulty
         %br/
         = f.select :difficulty, options_for_select([["Bambi", "bambi"], ["Normal", "normal"], ["Hardcore", "hardcore"], ["Gold", "gold"]]), {}, class: "form-control"
+  .row
+    %h2 
+      Social Media
+      %small (Not Required)
+    %hr
+    .col-md-4
+      %p
+        = f.label :twitter
+        = f.text_field :twitter, class: 'form-control'
+      %p
+        = f.label :facebook
+        %br/
+        = f.text_field :facebook, class: 'form-control'
+    .col-md-4
+      %p
+        = f.label :website
+        %br/
+        = f.text_field :website, class: 'form-control'
+      %p
+        = f.label :steam
+        %br/
+        = f.text_field :steam, class: 'form-control'
+    .col-md-4
+      %p
+        = f.label :youtube
+        %br/
+        = f.text_field :youtube, class: 'form-control'
+      %p
+        = f.label :reddit
+        %br/
+        = f.text_field :reddit, class: 'form-control'
   .row
     .col-md-12
       %h2 Server Banner

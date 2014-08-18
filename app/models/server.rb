@@ -38,10 +38,17 @@ class Server
   field :map, type: String, default: ""
   field :slots, type: Integer, default: 8
 
-  has_many :reports
-  has_many :comments
-  has_many :votes
-  has_many :favorites
+  field :steam, type: String
+  field :reddit, type: String
+  field :twitter, type: String
+  field :facebook, type: String
+  field :youtube, type: String
+  field :website, type: String
+
+  has_many :reports, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :votes, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   belongs_to :user
 
 end

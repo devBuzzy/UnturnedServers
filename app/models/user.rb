@@ -27,11 +27,11 @@ class User
   field :current_sign_in_ip, type: String
   field :last_sign_in_ip,    type: String
 
-  has_many :servers
-  has_many :reports
-  has_many :comments
-  has_many :votes
-  has_many :favorites
+  has_many :servers, dependent: :destroy
+  has_many :reports, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :votes, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
