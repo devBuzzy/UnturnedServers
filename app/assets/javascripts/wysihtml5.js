@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	$('.wysihtml5').wysihtml5({
+	var editor = $('.wysihtml5').wysihtml5({
 		toolbar: {
 			"fa": true,
 			"blockquote": false

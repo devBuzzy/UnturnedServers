@@ -96,8 +96,8 @@
         %br/
         = f.text_area :info, class: 'form-control wysihtml5', :rows => "10", :cols => "10", id: 'description'
         .countdown
-      :javascript
-        countdown('#description', '.countdown', 1000)
+      //:javascript
+        //countdown('#description', '.countdown', 1000)
   .row
     .col-md-12
       = f.submit "Submit", class: "btn btn-primary"
