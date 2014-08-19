@@ -25,8 +25,25 @@ a:visited.server { color: black; text-decoration: none; }
 a:hover.server { color: black; text-decoration: none; } 
 a:active.server { color: black; text-decoration: none; } 
 
+a:link.tag { color: white; text-decoration: none; } 
+a:visited.tag { color: white; text-decoration: none; } 
+a:hover.tag { color: white; text-decoration: none; } 
+a:active.tag { color: white; text-decoration: none; } 
+
 .social-media {
 	font-size: 32px;
+}
+
+.nav-tabs > li, .nav-pills > li {
+    float:none;
+    display:inline-block;
+    *display:inline;
+     zoom:1;
+    vertical-align: bottom;
+}
+
+.nav-tabs, .nav-pills {
+    text-align:center;
 }
 
 #none {

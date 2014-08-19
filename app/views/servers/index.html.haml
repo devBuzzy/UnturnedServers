@@ -28,7 +28,6 @@
         - rank = 1
         - if params[:page]
           - rank = ((params[:page].to_i - 1) * 25) + index
-          - puts "EHREE", rank
         - else
           - rank = index
         %tr
@@ -39,25 +38,11 @@
           %td{style: "width: 40%; vertical-align: middle;"}
             = link_to image_tag(server_banner_path(server)), server_path(server)
             .div{style: "margin-top: 10px; margin-bottom: 5px;"}
-              - if server.pvp
-                %span.label.label-danger.align PvP
-              - else
-                %span.label.label-success.align PvE
-              - diff = server.difficulty
-              - if diff == "bambi"
-                %span.label.label-success.align Bambi
-              - elsif diff == "normal"
-                %span.label.label-primary.align Normal
-              - elsif diff == "hardcore"
-                %span.label.label-danger.align Hardcore
-              - elsif diff == "gold"
-                %span.label.label-warning.align Gold
-              - if server.sync
-                %span.label.label-success.align Sync
-              - else
-                %span.label.label-primary.align No Sync
-              %span.label.label-primary.align= server.map
-              %span.label.label-primary.align{style: "vertical-align: middle;"}= server.version
+              %a.tag{href: version_path(server.version)}
+                %span.label.label-primary.align{style: "vertical-align: middle;"}= server.version
+              - server.tags.each do |tag|
+                %a.tag{href: tag_path(tag)}
+                  %span.label.label-primary.align{style: "display: inline;"}=tag
           %td{style: "width: 15%; vertical-align: middle;", class: "server-ip-#{server.id}"}
             %span{class: "ip", style: "font-size: 18px;", rel: "tooltip", title: "Click to copy to clipboard.", data: {placement: "top"}}
               %strong{id: "clipboard-#{server.id}", class: "clip_button", "data-clipboard-text" => "#{server.ip}"}= server.ip

@@ -116,43 +116,14 @@
               Slots
             %td= @server.slots
           %tr
-            %td 
-              %i.fa.fa-exchange
-              Sync
-            %td.middle
-              - if @server.sync
-                .label.label-success Enabled
-              - else
-                .label.label-danger Disabled
-          %tr
-            %td 
-              %i.fa.fa-bars
-              Difficulty
-            %td.middle
-              - diff = @server.difficulty
-              - if diff == "bambi"
-                .label.label-success Bambi
-              - elsif diff == "normal"
-                .label.label-primary Normal
-              - elsif diff == "hardcore"
-                .label.label-danger Hardcore
-              - elsif diff == "gold"
-                .label.label-warning Gold
-          %tr
-            %td 
-              %i.fa.fa-compass
-              Map
-            %td.middle
-              .label.label-primary= @server.map
-          %tr
-            %td 
-              %i.fa.fa-fighter-jet
-              PvP
-            %td.middle
-              - if @server.pvp
-                .label.label-success Enabled
-              - else
-                .label.label-danger Disabled
+            %td
+              %i.fa.fa-tag
+              Tags
+            %td
+              .tags
+                - @server.tags.each do |tag|
+                  %li
+                    %a{href: tag_path(tag)}= tag
           %tr
             %td 
               %i.fa.fa-user

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get "users/index"
-  get "users/show"
   root "servers#index"
   post '/contact', :to => "application#contact"
+  get '/tag/:tag', :to => "servers#index", :as => "tag"
+  get '/version/:version', :to => "servers#index", :as => "version"
   resources :servers do
   	resources :comments
     resources :reports

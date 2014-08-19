@@ -15,6 +15,7 @@ gem 'jquery-tablesorter'
 gem 'bootstrap-wysihtml5-rails'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'mini_magick'
+gem 'mongoid_taggable'
 group :development do
 	gem 'better_errors'
   gem 'faker'
