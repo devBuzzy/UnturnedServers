@@ -2,7 +2,7 @@ class ServersController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show, :banner]
 
   def index
-  	@servers = Server.asc("vote_count").page(params[:page])
+  	@servers = Server.desc("vote_count").page(params[:page])
   end
 
   def show
