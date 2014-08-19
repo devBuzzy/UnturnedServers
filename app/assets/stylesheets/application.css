@@ -25,6 +25,10 @@ a:visited.server { color: black; text-decoration: none; }
 a:hover.server { color: black; text-decoration: none; } 
 a:active.server { color: black; text-decoration: none; } 
 
+.social-media {
+	font-size: 32px;
+}
+
 #none {
   color: darkgray;
   text-align: center;

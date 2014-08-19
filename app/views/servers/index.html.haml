@@ -25,9 +25,15 @@
           Status
     %tbody
       - @servers.to_enum.with_index(1).each do |server, index|
+        - rank = 1
+        - if params[:page]
+          - rank = ((params[:page].to_i - 1) * 25) + index
+          - puts "EHREE", rank
+        - else
+          - rank = index
         %tr
           %td.text-center{style: "width: 10%; vertical-align:middle;"}
-            %strong= index
+            %strong= rank
           %td.text-center{style: "width: 15%; vertical-align: middle; font-size: 18px;"}
             %strong= link_to server.title, server_path(server), class: "server"
           %td{style: "width: 40%; vertical-align: middle;"}
@@ -45,7 +51,7 @@
               - elsif diff == "hardcore"
                 %span.label.label-danger.align Hardcore
               - elsif diff == "gold"
-                %span.label.label-warning.align Hardcore
+                %span.label.label-warning.align Gold
               - if server.sync
                 %span.label.label-success.align Sync
               - else

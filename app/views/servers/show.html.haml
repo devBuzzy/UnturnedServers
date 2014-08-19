@@ -19,13 +19,13 @@
       .div.text-center
         .btn-group
           - if current_user and current_user.has_favored(@server)
-            = link_to '<i class="fa fa-heart"></i> Unfavor'.html_safe, server_favorite_path(@server, current_user.favorite_for(@server)), class: 'btn btn-danger', method: :delete
+            = link_to '<i class="fa fa-heart"></i> Unfavor'.html_safe, server_favorite_path(@server, current_user.favorite_for(@server)), class: 'btn btn-danger', rel: "tooltip", title: "Remove this server from your favorites", method: :delete
           - else
-            = link_to '<i class="fa fa-heart"></i> Favorite'.html_safe, new_server_favorite_path(@server), class: 'btn btn-danger'
-          %a.btn.btn-success{href: server_vote_path(@server)}
+            = link_to '<i class="fa fa-heart"></i> Favorite'.html_safe, new_server_favorite_path(@server), class: 'btn btn-danger', rel: "tooltip", title: "Add this server to your favorites"
+          %a.btn.btn-success{href: server_vote_path(@server), rel: "tooltip", title: "Vote for this server."}
             %i.fa.fa-thumbs-up
             Vote
-          %button.btn.btn-primary{"data-target" => "#connect-modal", "data-toggle" => "modal"} 
+          %button.btn.btn-primary{"data-target" => "#connect-modal", "data-toggle" => "modal", rel: "tooltip", title: "Learn how to connect to this server."} 
             %i.fa.fa-play
             Connect
           #connect-modal.modal.fade{:role => "dialog", :tabindex => "-1"}
@@ -53,9 +53,32 @@
                     %li Click 'Connect.'
                 .modal-footer
                   %button.btn.btn-danger{"data-dismiss" => "modal", :type => "button"} Close
-          %a.btn.btn-danger{href: new_server_report_path(@server)}
+          %a.btn.btn-danger{href: new_server_report_path(@server), rel: "tooltip", title: "Report an issue with this server."}
             %i.fa.fa-flag
             Report
+  .row
+    .col-md-12
+      .text-center{style: "margin-top: 5px"}
+        - if @server.steam != nil 
+          %a.social{href: "http://steamcommunity.com/groups/#{@server.steam}", rel: "tooltip", title: "Server Steam Group", data: {placement: "top"}}
+            %i.fa.fa-steam-square.social-media{style: "color: black;"}
+        - if @server.facebook != nil 
+          %a.social{href: "#{@server.facebook}", rel: "tooltip", title: "Server Facebook Page", data: {placement: "top"}}
+            %i.fa.fa-facebook-square.social-media{style: "color: blue;"}
+        - if @server.twitter != nil
+          %a.social{href: "http://twitter.com/#{@server.twitter}", rel: "tooltip", title: "Server Twitter", data: {placement: "top"}}
+            %i.fa.fa-twitter-square.social-media{style: "color: #4099FF;"}
+        - if @server.reddit != nil
+          %a.social{href: "http://reddit.com/r/#{@server.reddit}", rel: "tooltip", title: "Server Subreddit", data: {placement: "top"}}
+            %i.fa.fa-reddit-square.social-media{style: "color: lightblue;"}
+        - if @server.youtube != nil
+          %a.social{href: "https://www.youtube.com/user/#{@server.youtube}", rel: "tooltip", title: "Youtube Channel", data: {placement: "top"}}
+            %i.fa.fa-youtube-square.social-media{style: "color: #FF0202;"}
+        - if @server.website != nil
+          %a.social{href: @server.website, rel: "tooltip", title: "Server Website", data: {placement: "top"}}
+            %i.fa.fa-html5.social-media
+        :javascript
+          $('.social').tooltip();
   .row
     .col-md-12
       .text-center
@@ -200,7 +223,9 @@
           chart.update();
   .row
     .col-md-6
-      
+      %h2 Social Media
+      %hr
+      .text-center
     .col-md-6
       %h2 
         Share

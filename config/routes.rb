@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "users/index"
+  get "users/show"
   root "servers#index"
   post '/contact', :to => "application#contact"
   resources :servers do

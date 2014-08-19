@@ -6,4 +6,8 @@ module ApplicationHelper
   def can_manage(server)
     current_user and (current_user.admin? or server.user == current_user)
   end
+
+  def set_active(controller)
+    return params[:controller] == controller ? "active" : ""
+  end
 end
