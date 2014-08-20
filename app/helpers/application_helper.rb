@@ -10,4 +10,13 @@ module ApplicationHelper
   def set_active(controller)
     return params[:controller] == controller ? "active" : ""
   end
+
+  def tag_texts
+    tag_models = Tag.only(:text).all.to_a
+    valid_tags = Array.new
+    tag_models.each do |tag|
+      valid_tags << tag.text
+    end
+    return valid_tags
+  end
 end

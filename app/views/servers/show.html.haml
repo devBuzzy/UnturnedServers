@@ -109,7 +109,8 @@
               %i.fa.fa-history
               Version
             %td.middle
-              .label.label-primary= @server.version
+              %a{href: version_path(@server.version.gsub(".", "-"))}
+                %span.label.label-primary= @server.version
           %tr
             %td 
               %i.fa.fa-list-ol

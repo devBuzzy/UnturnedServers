@@ -10,6 +10,20 @@ class Server
 
   def convert_tags
     self.tags = self.tag_string.split(', ')
+    self.tags.each do |tag|
+      if tag == " "
+        self.tags.delete(tag)
+      end
+    end
+  end
+
+  def self.tag_texts
+    tag_models = Tag.only(:text).all.to_a
+    valid_tags = Array.new
+    tag_models.each do |tag|
+      valid_tags << tag.text
+    end
+    return valid_tags
   end
 
   def tag_list
@@ -30,17 +44,11 @@ class Server
     if tags.size == 0 or tags.size > 5
         errors.add :tags, "must consist of one to five tags"
     end
-    puts tags.size, "TEHREEE"
   end
 
   def tag_names
-    tag_models = Tag.only(:text).all.to_a
-    valid_tags = Array.new
-    tag_models.each do |tag|
-      valid_tags << tag.text
-    end
+    valid_tags = Server.tag_texts
     unknown = 0
-    puts "CURRENT", tags, "VALID", valid_tags
     tags.each do |tag|
       if not valid_tags.include?(tag)
         unknown += 1

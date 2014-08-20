@@ -18,6 +18,8 @@
 //= require bootstrap-wysihtml5
 //= require wysihtml5
 //= require ZeroClipboard
+//= require jquery.textcomplete
+//= require tags_complete
 //= require_tree .
 
 ZeroClipboard.config( { swfPath: "http://unturned.jake0oo0.me/ZeroClipboard.swf" } );
