@@ -38,7 +38,7 @@
           %td{style: "width: 40%; vertical-align: middle;"}
             = link_to image_tag(server_banner_path(server)), server_path(server)
             .div{style: "margin-top: 10px; margin-bottom: 5px;"}
-              %a.tag{href: version_path(server.version)}
+              %a.tag{href: version_path(server.version.gsub(".", "-"))}
                 %span.label.label-primary.align{style: "vertical-align: middle;"}= server.version
               - server.tags.each do |tag|
                 %a.tag{href: tag_path(tag)}

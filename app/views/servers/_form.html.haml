@@ -12,6 +12,7 @@
         = f.label :ip, 'IP Address'
         %br/
         = f.text_field :ip, class: 'form-control', placeholder: "External Server IP"
+    .col-md-4
       %p
         = f.label :port
         %br/
@@ -22,30 +23,13 @@
         = f.select :location, options_for_select([["North America", "north-america"], ["South America", "south-america"], ["Europe", "europe"], ["Asia", "asia"], ["Australia", "australia"], ["Africa", "africa"]]), {}, class: "form-control"
     .col-md-4
       %p
-        = f.label :sync, "Sync?"
-        %br/
-        = f.select :sync, options_for_select([["Sync", true], ["No Sync", false]]), {}, class: "form-control"
-      %p
-        = f.label :pvp, "PvP/PvE?"
-        %br/
-        = f.select :pvp, options_for_select([["PvP", true], ["PvE", false]]), {}, class: "form-control"
-      %p
         = f.label :slots
         %br/
         = f.text_field :slots, class: 'form-control', value: 8
-    .col-md-4
-      %p
-        = f.label :map
-        %br/
-        = f.select :map, options_for_select([["P.E.I.", "P.E.I."]]), {}, class: "form-control"
       %p
         = f.label :version
         %br/
         = f.select :version, options_for_select([["2.2.4", "2.2.4"], ["2.2.5", "2.2.5"]]), {}, class: "form-control"
-      %p
-        = f.label :difficulty
-        %br/
-        = f.select :difficulty, options_for_select([["Bambi", "bambi"], ["Normal", "normal"], ["Hardcore", "hardcore"], ["Gold", "gold"]]), {}, class: "form-control"
   .row
     %h2 
       Social Media
@@ -89,15 +73,13 @@
         .help-block A 468x60 Image for the server banner.
   .row
     .col-md-12
-      %h2 Extra Info
+      %h2 Server Description
       %hr
       %p
         = f.label :info, 'Description'
         %br/
-        = f.text_area :info, class: 'form-control wysihtml5', :rows => "10", :cols => "10", id: 'description'
-        .countdown
-      //:javascript
-        //countdown('#description', '.countdown', 1000)
+        = f.text_area :info, class: 'form-control', :rows => "10", :cols => "10", id: 'description'
+        .help-block You may use the editor above to help with the formatting of your server description.
   .row
     .col-md-12
       = f.submit "Submit", class: "btn btn-primary"
