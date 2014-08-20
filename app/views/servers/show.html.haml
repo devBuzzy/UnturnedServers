@@ -59,22 +59,22 @@
   .row
     .col-md-12
       .text-center{style: "margin-top: 5px"}
-        - if @server.steam != nil 
+        - if @server.steam != nil and @server.steam != ""
           %a.social{href: "http://steamcommunity.com/groups/#{@server.steam}", rel: "tooltip", title: "Server Steam Group", data: {placement: "top"}}
             %i.fa.fa-steam-square.social-media{style: "color: black;"}
-        - if @server.facebook != nil 
+        - if @server.facebook != nil  and @server.facebook != ""
           %a.social{href: "#{@server.facebook}", rel: "tooltip", title: "Server Facebook Page", data: {placement: "top"}}
             %i.fa.fa-facebook-square.social-media{style: "color: blue;"}
-        - if @server.twitter != nil
+        - if @server.twitter != nil and @server.twitter != ""
           %a.social{href: "http://twitter.com/#{@server.twitter}", rel: "tooltip", title: "Server Twitter", data: {placement: "top"}}
             %i.fa.fa-twitter-square.social-media{style: "color: #4099FF;"}
-        - if @server.reddit != nil
+        - if @server.reddit != nil and @server.reddit != ""
           %a.social{href: "http://reddit.com/r/#{@server.reddit}", rel: "tooltip", title: "Server Subreddit", data: {placement: "top"}}
             %i.fa.fa-reddit-square.social-media{style: "color: lightblue;"}
-        - if @server.youtube != nil
+        - if @server.youtube != nil and @server.youtube != ""
           %a.social{href: "https://www.youtube.com/user/#{@server.youtube}", rel: "tooltip", title: "Youtube Channel", data: {placement: "top"}}
             %i.fa.fa-youtube-square.social-media{style: "color: #FF0202;"}
-        - if @server.website != nil
+        - if @server.website != nil and @server.website != ""
           %a.social{href: @server.website, rel: "tooltip", title: "Server Website", data: {placement: "top"}}
             %i.fa.fa-html5.social-media
         :javascript

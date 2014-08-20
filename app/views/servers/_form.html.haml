@@ -31,6 +31,14 @@
         %br/
         = f.select :version, options_for_select([["2.2.4", "2.2.4"], ["2.2.5", "2.2.5"]]), {}, class: "form-control"
   .row
+    %h2
+      Tags
+      %small Minimum of 1, Maximum of 5
+    %p
+      = f.label :tag_string
+      = f.text_field :tag_string, class: 'form-control', placeholder: 'Enter tags here...'
+      .help-block Seperate tags with a comma.
+  .row
     %h2 
       Social Media
       %small (Not Required)

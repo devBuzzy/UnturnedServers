@@ -3,8 +3,18 @@ class Server
   include Mongoid::Timestamps
   mount_uploader :banner, BannerUploader
   before_save :update_vote_count
+  before_validation :convert_tags
   validate :check_dimensions, :on => :create
 
+  attr_accessor :tag_string
+
+  def convert_tags
+    self.tags = self.tag_string.split(', ')
+  end
+
+  def tag_list
+    self.tag_string = self.tags.join(", ")
+  end
 
   def check_dimensions
     if !banner_cache.nil? && !(banner.width == 468 && banner.height == 60)
@@ -14,6 +24,31 @@ class Server
 
   def update_vote_count
     self.vote_count = self.votes.size
+  end
+
+  def tag_count
+    if tags.size == 0 or tags.size > 5
+        errors.add :tags, "must consist of one to five tags"
+    end
+    puts tags.size, "TEHREEE"
+  end
+
+  def tag_names
+    tag_models = Tag.only(:text).all.to_a
+    valid_tags = Array.new
+    tag_models.each do |tag|
+      valid_tags << tag.text
+    end
+    unknown = 0
+    puts "CURRENT", tags, "VALID", valid_tags
+    tags.each do |tag|
+      if not valid_tags.include?(tag)
+        unknown += 1
+      end
+    end
+    if unknown > 0
+      errors.add :tags, "found one or more unknown tags."
+    end
   end
 
   validates :title, presence: true
@@ -26,6 +61,8 @@ class Server
   validates :slots, presence: true
   validates_numericality_of :slots
   validates :banner, presence: true
+  validate :tag_count
+  validate :tag_names
 
   field :title, type: String, default: ""
   field :ip, type: String, default: ""

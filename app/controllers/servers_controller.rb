@@ -21,6 +21,16 @@ class ServersController < ApplicationController
 
 	def edit
 		@server = Server.find(params[:id])
+		@server.tag_list
+	end
+
+	def update
+		@server = Server.find(params[:id])
+		if @server.update(server_params)
+			redirect_to @server, :notice => 'Successfully made changes to a server.'
+		else
+			render 'edit'
+		end
 	end
 
 	def create
@@ -63,7 +73,7 @@ class ServersController < ApplicationController
 
 	private
 	def server_params
-		params.require(:server).permit(:banner, :banner_cache, :slots, :title, :ip, :port, :pvp, :info, :gold, :location, :version, :difficulty, :sync, :map)
+		params.require(:server).permit(:twitter, :facebook, :reddit, :youtube, :website, :steam, :tags, :tag_string, :banner, :banner_cache, :slots, :title, :ip, :port, :pvp, :info, :gold, :location, :version, :difficulty, :sync, :map)
 	end
 
 end
