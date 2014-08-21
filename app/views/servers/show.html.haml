@@ -147,6 +147,15 @@
               Updated
             %td.middle
               .label.label-default= time_ago_in_words(@server.updated_at) + ' ago'
+      %h2 
+        Share
+        %small 
+          Promote Your Server
+      %hr
+      %span.st_facebook_large{:displaytext => "Facebook"}
+      %span.st_googleplus_large{:displaytext => "Google +"}
+      %span.st_twitter_large{:displaytext => "Tweet"}
+      %span.st_email_large{:displaytext => "Email"}
     .col-md-6{id: "stats-col"}
       %h2 Statistics
       %hr
@@ -168,47 +177,34 @@
               Views
             %td 0
       .text-center
-        %h3 Voting History
-        %canvas{id: 'vote-chart', height: "350"}
+        %h3 Graphed Statistics
+        .tabbable
+          %ul.nav.nav-tabs
+            %li.tab-pane.active
+              %a{"data-toggle" => "tab", href: "#voting"} Voting
+            %li.tab-pane
+              %a{"data-toggle" => "tab", href: "#favorites"} Favorites
+          .tab-content{style: "overflow: visible;"}
+            .tab-pane.active{id: "voting"}
+              %canvas{id: 'votes-chart', height: "350"}
+            .tab-pane{id: "favorites"}
+              %canvas{id: 'favorites-chart', height: "350"}
+
         - today = Time.now
         :javascript
-          var width = $("#stats-col").width();
-          var canvas = document.getElementById("vote-chart");
-          var ctx = canvas.getContext("2d");
-          ctx.canvas.width = width;
-          var data = {
-              labels: ["#{(today - 6.day).strftime("%A")}", "#{(today - 5.day).strftime("%A")}", "#{(today - 4.day).strftime("%A")}", "#{(today - 3.day).strftime("%A")}", "#{(today - 2.day).strftime("%A")}", "#{(today - 1.day).strftime("%A")}", "#{today.strftime("%A")}"],
-              datasets: [
-                  {
-                      label: "Vote Data",
-                      fillColor: "rgba(151,187,205,0.2)",
-                      strokeColor: "rgba(151,187,205,1)",
-                      pointColor: "rgba(151,187,205,1)",
-                      pointStrokeColor: "#fff",
-                      pointHighlightFill: "#fff",
-                      pointHighlightStroke: "rgba(151,187,205,1)",
-                      data: [#{get_time(@server, 6)}, #{get_time(@server, 5)}, #{get_time(@server, 4)}, #{get_time(@server, 3)}, #{get_time(@server, 2)}, #{get_time(@server, 1)}, #{get_time(@server, 0)}]
-                  }
-              ]
-          };
-          var chart = new Chart(ctx).Line(data);
-          chart.update();
-  .row
-    .col-md-6
-      %h2 Social Media
-      %hr
-      .text-center
-    .col-md-6
-      %h2 
-        Share
-        %small 
-          Promote Your Server
-      %hr
-      %span.st_facebook_large{:displaytext => "Facebook"}
-      %span.st_googleplus_large{:displaytext => "Google +"}
-      %span.st_twitter_large{:displaytext => "Tweet"}
-      %span.st_email_large{:displaytext => "Email"}
+          var labels = ["#{(today - 6.day).strftime("%A")}", "#{(today - 5.day).strftime("%A")}", "#{(today - 4.day).strftime("%A")}", "#{(today - 3.day).strftime("%A")}", "#{(today - 2.day).strftime("%A")}", "#{(today - 1.day).strftime("%A")}", "#{today.strftime("%A")}"]
+          displayChart("votes-chart", labels, getData("votes"), "votes");
+          displayChart("favorites-chart", labels, getData("favorites"), "favorites");
 
+          function getData(type) {
+            var data = [];
+            if (type == "favorites") {
+              data = [#{get_time(@server, 6, "favorites")}, #{get_time(@server, 5, "favorites")}, #{get_time(@server, 4, "favorites")}, #{get_time(@server, 3, "favorites")}, #{get_time(@server, 2, "favorites")}, #{get_time(@server, 1, "favorites")}, #{get_time(@server, 0, "favorites")}]
+            } else if (type == "votes") {
+              data = [#{get_time(@server, 6, "votes")}, #{get_time(@server, 5, "votes")}, #{get_time(@server, 4, "votes")}, #{get_time(@server, 3, "votes")}, #{get_time(@server, 2, "votes")}, #{get_time(@server, 1, "votes")}, #{get_time(@server, 0, "votes")}]
+            }
+            return data;
+          }
   .row
     .col-md-12
       %h2 Description

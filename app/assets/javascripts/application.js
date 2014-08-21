@@ -20,6 +20,7 @@
 //= require ZeroClipboard
 //= require jquery.textcomplete
 //= require tags_complete
+//= require server-charts
 //= require_tree .
 
 ZeroClipboard.config( { swfPath: "http://unturned.jake0oo0.me/ZeroClipboard.swf" } );

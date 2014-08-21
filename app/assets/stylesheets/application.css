@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require bootstrap.min
  *= require jquery-tablesorter/theme.bootstrap
  *= require bootstrap-wysihtml5
  */
@@ -34,7 +35,7 @@ a:active.tag { color: white; text-decoration: none; }
 	font-size: 32px;
 }
 
-.nav-tabs > li, .nav-pills > li {
+.nav-tabs.footer > li, .nav-pills.footer > li {
     float:none;
     display:inline-block;
     *display:inline;
@@ -42,7 +43,7 @@ a:active.tag { color: white; text-decoration: none; }
     vertical-align: bottom;
 }
 
-.nav-tabs, .nav-pills {
+.nav-tabs.footer, .nav-pills.footer {
     text-align:center;
 }
 
@@ -74,24 +75,4 @@ a:active.tag { color: white; text-decoration: none; }
 	left: auto;
 }
 
-.navbar-inverse { background-color: #4D4D4D}
-.navbar-inverse .navbar-nav>.active>a:hover,.navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus { background-color: #878284}
-.navbar-inverse .navbar-nav>.active>a,.navbar-inverse .navbar-nav>.open>a,.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover,.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus { background-color: #5E5E5E}
-.dropdown-menu { background-color: #9E989B}
-.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus { background-color: #254F73}
-.navbar-inverse { background-image: none; }
-.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus { background-image: none; }
-.navbar-inverse { border-color: #4D4D4D}
-.navbar-inverse .navbar-brand { color: #FFFFFF}
-.navbar-inverse .navbar-brand:hover { color: #FF0000}
-.navbar-inverse .navbar-nav>li>a { color: #FFFFFF}
-.navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus { color: #FFFFFF}
-.navbar-inverse .navbar-nav>.active>a,.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus { color: #FFFFFF}
-.navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus { color: #FFFFFF}
-.dropdown-menu>li>a { color: #4D4D4D}
-.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus { color: #FFFFFF}
-.navbar-inverse .navbar-nav>.dropdown>a .caret { border-top-color: #FFFFFF}
-.navbar-inverse .navbar-nav>.dropdown>a:hover .caret { border-top-color: #FFFFFF}
-.navbar-inverse .navbar-nav>.dropdown>a .caret { border-bottom-color: #FFFFFF}
-.navbar-inverse .navbar-nav>.dropdown>a:hover .caret { border-bottom-color: #FFFFFF}
 

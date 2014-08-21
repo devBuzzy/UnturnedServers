@@ -1,4 +1,4 @@
-%nav.navbar.navbar-inverse.navbar-fixed-top{role: "navigation"}
+%nav.navbar.navbar-fixed-top.navbar-default{role: "navigation"}
   .container-fluid
     .navbar-header
       %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", type: "button"}
@@ -7,11 +7,11 @@
         %span.icon-bar
         %span.icon-bar
       %a.navbar-brand{href: root_path} Unturned Servers
-    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+    .test
       %ul.nav.navbar-nav
         %li{class: set_active("servers")}
           %a{href: root_path} 
-            .glyphicon.glyphicon-home
+            %i.fa.fa-hdd-o
             Servers
       %ul.nav.navbar-nav.navbar-right
         %li.dropdown
