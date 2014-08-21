@@ -81,7 +81,7 @@ class Server
   field :version, type: String, default: ""
   field :slots, type: Integer, default: 8
 
-  search_in :title, :ip, :tags
+  search_in :title, :tags
 
   field :steam, type: String
   field :reddit, type: String
