@@ -2,14 +2,17 @@ class ServersController < ApplicationController
 	before_filter :authenticate_user!, :except => [:index, :show, :banner]
 
 	def index
-		if params[:tag]
+		if params[:search]
+			query = params[:search][:query]
+			return @servers = Server.full_text_search(query, allow_empty_search: true).desc("vote_count").page(params[:page])
+		elsif params[:tag]
 			return @servers = Server.any_in(tags: [params[:tag]]).desc("vote_count").page(params[:page])
 		elsif params[:version]
 			return @servers = Server.where(version: params[:version].gsub("-", ".")).desc("vote_count").page(params[:page]) 
 		end
 		@servers = Server.desc("vote_count").page(params[:page])
 	end
-
+	
 	def show
 		@server = Server.find(params[:id])
 		return redirect_to servers_path, :alert => 'That server does not exist.' if @server == nil

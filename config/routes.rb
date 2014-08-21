@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   post '/contact', :to => "application#contact"
   get '/tag/:tag', :to => "servers#index", :as => "tag"
   get '/version/:version', :to => "servers#index", :as => "version"
+  post '/search', :to => "servers#index", :as => "search"
   resources :servers do
+    post :index
   	resources :comments
     resources :reports
     resources :favorites do 
