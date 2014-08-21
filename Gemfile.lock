@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/Jake0oo0/mongoid_search.git
+  revision: d56e65c65cbad1acc9b35fe7d3ef1b7d638c2312
+  specs:
+    mongoid_search (0.3.3)
+      mongoid (>= 3.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -27,12 +34,12 @@ GEM
       tzinfo (~> 0.3.37)
     addressable (2.3.6)
     arel (4.0.2)
-    bcrypt (3.1.7)
     bcrypt (3.1.7-x64-mingw32)
     bcrypt-ruby (3.0.1)
-    better_errors (1.1.0)
+    better_errors (2.0.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
+      rack (>= 0.9.0)
     bootstrap-wysihtml5-rails (0.3.2.100)
       railties (>= 3.0)
     bson (2.3.0)
@@ -112,9 +119,6 @@ GEM
     mongoid-grid_fs (2.1.0)
       mime-types (>= 1.0, < 3.0)
       mongoid (>= 3.0, < 5.0)
-    mongoid_taggable (1.1.1)
-      mongoid (>= 3)
-      rake
     moped (2.0.0)
       bson (~> 2.2)
       connection_pool (~> 2.0)
@@ -129,8 +133,6 @@ GEM
     net-ssh (2.9.1)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
-    nokogiri (1.6.3.1)
-      mini_portile (= 0.6.0)
     nokogiri (1.6.3.1-x64-mingw32)
       mini_portile (= 0.6.0)
     oauth2 (1.0.0)
@@ -208,7 +210,7 @@ DEPENDENCIES
   kaminari
   mini_magick
   mongoid
-  mongoid_taggable
+  mongoid_search!
   rails (= 4.0.4)
   sdoc
   tzinfo-data

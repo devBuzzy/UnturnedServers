@@ -1,6 +1,7 @@
 class Server
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Search
   mount_uploader :banner, BannerUploader
   before_save :update_vote_count
   before_validation :convert_tags
@@ -79,6 +80,8 @@ class Server
   field :location, type: String, default: ""
   field :version, type: String, default: ""
   field :slots, type: Integer, default: 8
+
+  search_in :title, :ip, :tags
 
   field :steam, type: String
   field :reddit, type: String
