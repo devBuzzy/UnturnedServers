@@ -4,10 +4,10 @@ function tagsComplete(tag_array, tags_box) {
 	    {
 	        match: /(\w*)$/,
 	        search: function (term, callback) {
-	            callback($.map(elements, function (element) {
-	                return element.indexOf(term) === 0 ? element : null;
-	            }));
-	        },
+			    callback($.map(elements, function (word) {
+			        return word.toLowerCase().indexOf(term.toLowerCase()) === 0 ? word : null;
+			    }));
+			},
 	        index: 1,
 	        replace: function (element) {
 	            return element + ', ';

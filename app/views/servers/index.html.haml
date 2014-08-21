@@ -1,6 +1,6 @@
 - content_for :title do 'Servers' end
 .page-header
-  .pull-right
+  .pull-right 
     .form-inline
       = form_tag search_path, method: 'post' do
         = text_field :search, :query, class: 'form-control', value: params[:search] ? params[:search][:query] : "" 
