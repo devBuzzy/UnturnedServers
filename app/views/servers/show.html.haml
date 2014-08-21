@@ -88,11 +88,11 @@
     .col-md-6
       %h2 Server Information
       %hr
-      %table.table.table-bordered
+      %table.table.table-bordered{style: "font-size: 15px;"}
         %tbody
           %tr
             %td 
-              .glyphicon.glyphicon-upload
+              %i.fa.fa-arrow-circle-up
               IP Address
             %td
               %span{id: 'server-ip', "data-clipboard-text" => @server.ip, rel: "tooltip", title: "Click to copy to clipboard.", href: "#", data: {placement: "top"}}= @server.ip
@@ -101,16 +101,16 @@
                 $("#server-ip").tooltip();
           %tr
             %td
-              .glyphicon.glyphicon-download 
+              %i.fa.fa-arrow-circle-up
               Port
             %td= @server.port
           %tr
             %td 
               %i.fa.fa-history
               Version
-            %td.middle
+            %td.middle{style: "vertical-align: middle;"}
               %a{href: version_path(@server.version.gsub(".", "-"))}
-                %span.label.label-primary= @server.version
+                %span.label.label-primary{style: "vertical-align: middle;"}= @server.version
           %tr
             %td 
               %i.fa.fa-list-ol
@@ -159,7 +159,7 @@
     .col-md-6{id: "stats-col"}
       %h2 Statistics
       %hr
-      %table.table.table-bordered
+      %table.table.table-bordered{style: "font-size: 15px;"}
         %tbody
           %tr
             %td{style: 'width: 50%'}

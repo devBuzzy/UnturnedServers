@@ -7,7 +7,7 @@
 - if @servers.any?
   %table.table
     %thead
-      %tr
+      %tr{style: "font-size: 18px;"}
         %th
           %i.fa.fa-arrow-circle-up
           Rank
@@ -32,7 +32,7 @@
           - rank = index
         %tr
           %td.text-center{style: "width: 10%; vertical-align:middle;"}
-            %strong= rank
+            %strong{style: "font-size: 18px;"}= rank
           %td.text-center{style: "width: 15%; vertical-align: middle; font-size: 18px;"}
             %strong= link_to server.title, server_path(server), class: "server"
           %td{style: "width: 40%; vertical-align: middle;"}
