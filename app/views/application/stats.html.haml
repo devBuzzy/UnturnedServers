@@ -1,0 +1,79 @@
+.page-header
+  %h1 Site Stats
+
+.row
+  .col-md-6{id: "locations-canvas"}
+    %h2 Server Locations
+    %hr
+    %canvas{id: 'server-locations', height: "350"}
+  .col-md-6{id: "versions-canvas"}
+    %h2 Server Versions
+    %hr
+    %canvas{id: 'server-versions', height: "350"}
+
+:javascript
+  var location_data = [
+    {
+        value: #{@servers.where(:location => "north-america").size},
+        color:"#F7464A",
+        highlight: "#FF5A5E",
+        label: "North America"
+    },
+    {
+        value: #{@servers.where(:location => "south-america").size},
+        color: "#46BFBD",
+        highlight: "#5AD3D1",
+        label: "South America"
+    },
+    {
+        value: #{@servers.where(:location => "europe").size},
+        color: "orange",
+        highlight: "#FFC870",
+        label: "Europe"
+    },
+    {
+        value: #{@servers.where(:location => "asia").size},
+        color: "#FDB45C",
+        highlight: "#FFC870",
+        label: "Asia"
+    },
+    {
+        value: #{@servers.where(:location => "australia").size},
+        color: "#FDB45C",
+        highlight: "#FFC870",
+        label: "Australia"
+    },
+    {
+        value: #{@servers.where(:location => "africa").size},
+        color: "#FDB45C",
+        highlight: "#FFC870",
+        label: "Africa"
+    }
+  ]
+  var width = $("#locations-canvas").width();
+  var canvas = document.getElementById("server-locations");
+  var ctx = canvas.getContext("2d");
+  ctx.canvas.width = width;
+  var locationChart = new Chart(ctx).Pie(location_data);
+  locationChart.update();
+
+  var version_data = [
+    {
+        value: #{@servers.where(:version => "2.2.4").size},
+        color:"#F7464A",
+        highlight: "#FF5A5E",
+        label: "2.2.4"
+    },
+    {
+        value: #{@servers.where(:version => "2.2.5").size},
+        color: "#46BFBD",
+        highlight: "#5AD3D1",
+        label: "2.2.5"
+    }
+  ]
+  var width1 = $("#versions-canvas").width();
+  var canvas1 = document.getElementById("server-versions");
+  var ctx1 = canvas1.getContext("2d");
+  ctx1.canvas.width = width1;
+  var versionChart = new Chart(ctx1).Pie(version_data);
+  versionChart.update();
