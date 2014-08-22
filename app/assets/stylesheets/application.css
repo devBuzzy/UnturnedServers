@@ -10,12 +10,10 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require bootstrap.min
- *= require jquery-tablesorter/theme.bootstrap
  *= require bootstrap-wysihtml5
+ *= require_tree .
  */
-
 
 body {
     padding: 30px 40px;
@@ -35,18 +33,6 @@ a:active.tag { color: white; text-decoration: none; }
 	font-size: 32px;
 }
 
-.nav-tabs.footer > li, .nav-pills.footer > li {
-    float:none;
-    display:inline-block;
-    *display:inline;
-     zoom:1;
-    vertical-align: bottom;
-}
-
-.nav-tabs.footer, .nav-pills.footer {
-    text-align:center;
-}
-
 #none {
   color: darkgray;
   text-align: center;
@@ -60,19 +46,7 @@ a:active.tag { color: white; text-decoration: none; }
 	margin-top: 30px;
 }
 
-.align {
-	vertical-align: middle;
-	text-align: center;
-	font-size: 16px;
-}
-
-.middle {
-	vertical-align: middle;
-}
-
 #left-dropdown {
 	right: 0; 
 	left: auto;
 }
-
-

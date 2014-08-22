@@ -84,8 +84,8 @@
       .text-center
         %div{style: 'margin-top: 15px;'}
           = image_tag server_banner_url(@server), width: '468', height: '60'
-  .row
-    .col-md-6
+  .row-fluid
+    .col-md-7
       %h2 Server Information
       %hr
       %table.table.table-bordered{style: "font-size: 15px;"}
@@ -120,11 +120,11 @@
             %td
               %i.fa.fa-tag
               Tags
-            %td
-              .tags
+            %td{style: "width: 65%"}
+              .div
                 - @server.tags.each do |tag|
-                  %li
-                    %a{href: tag_path(tag)}= tag
+                  %a.tag{href: tag_path(tag)}
+                    %span.badge{style: "display: inline-block;"}=tag
           %tr
             %td 
               %i.fa.fa-user
@@ -156,7 +156,7 @@
       %span.st_googleplus_large{:displaytext => "Google +"}
       %span.st_twitter_large{:displaytext => "Tweet"}
       %span.st_email_large{:displaytext => "Email"}
-    .col-md-6{id: "stats-col"}
+    .col-md-5{id: "stats-col"}
       %h2 Statistics
       %hr
       %table.table.table-bordered{style: "font-size: 15px;"}
