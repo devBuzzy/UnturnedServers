@@ -9,6 +9,8 @@ class ServersController < ApplicationController
 			return @servers = Server.any_in(tags: [params[:tag]]).desc("vote_count").page(params[:page])
 		elsif params[:version]
 			return @servers = Server.where(version: params[:version].gsub("-", ".")).desc("vote_count").page(params[:page]) 
+		elsif params[:owner]
+			return @servers = Server.where(:user => params[:owner]).desc("vote_count").page(params[:page])
 		end
 		@servers = Server.desc("vote_count").page(params[:page])
 	end

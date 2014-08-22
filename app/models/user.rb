@@ -27,6 +27,22 @@ class User
   field :current_sign_in_ip, type: String
   field :last_sign_in_ip,    type: String
 
+  field :youtube
+  field :steam
+  field :twitter
+  field :facebook
+  field :skype
+  field :reddit
+  field :github
+  field :twitch
+
+  field :about
+
+  field :location
+  field :gender
+
+  field :newsletter, type: Boolean
+
   has_many :servers, dependent: :destroy
   has_many :reports, dependent: :destroy
   has_many :comments, dependent: :destroy

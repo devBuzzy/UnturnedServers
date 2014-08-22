@@ -1,0 +1,52 @@
+- if @servers.any?
+  %table.table
+    %thead
+      %tr{style: "font-size: 18px;"}
+        %th
+          %i.fa.fa-arrow-circle-up
+          Rank
+        %th
+          %i.fa.fa-home
+          Name
+        %th
+          %i.fa.fa-hdd-o
+          Server
+        %th 
+          %i.fa.fa-tag
+          Tags
+        %th 
+          %i.fa.fa-signal
+          Status
+    %tbody
+      - @servers.to_enum.with_index(1).each do |server, index|
+        - rank = 1
+        - if params[:page]
+          - rank = ((params[:page].to_i - 1) * 25) + index
+        - else
+          - rank = index
+        %tr
+          %td.text-center{style: "width: 10%; vertical-align:middle;"}
+            %strong{style: "font-size: 18px;"}= rank
+          %td.text-center{style: "width: 15%; vertical-align: middle; font-size: 18px;"}
+            %strong= link_to server.title, server_path(server), class: "server"
+          %td{style: "width: 40%;", class: "server-ip-#{server.id}"}
+            = link_to image_tag(server_banner_path(server)), server_path(server)
+            %span{class: "ip", style: "font-size: 18px;", rel: "tooltip", title: "Click to copy to clipboard.", data: {placement: "top"}}
+              %strong IP:
+              %strong{id: "clipboard-#{server.id}", class: "clip_button", "data-clipboard-text" => "#{server.ip}"}= server.ip
+            :javascript
+              $(".ip").tooltip();
+            :javascript
+              var client = new ZeroClipboard(document.getElementById("clipboard-#{server.id}"));
+          %td{style: "width: 25%;"}
+            .div
+              %a.tag{href: version_path(server.version.gsub(".", "-"))}
+                %span.badge=server.version
+              - server.tags.each do |tag|
+                %a.tag{href: tag_path(tag)}
+                  %span.badge{style: "margin-bottom: 3px;"}=tag
+          %td{style: "width: 10%; vertical-align: middle; font-size: 20px;"}
+            %span.label.label-success Online
+  = paginate @servers
+- else
+  #none No servers have been submitted yet.

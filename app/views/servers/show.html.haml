@@ -108,7 +108,7 @@
             %td 
               %i.fa.fa-history
               Version
-            %td.middle{style: "vertical-align: middle;"}
+            %td{style: "vertical-align: middle;"}
               %a{href: version_path(@server.version.gsub(".", "-"))}
                 %span.label.label-primary{style: "vertical-align: middle;"}= @server.version
           %tr
@@ -139,13 +139,13 @@
             %td 
               %i.fa.fa-calendar-o
               Registered
-            %td.middle
+            %td{style: "vertical-align: middle;"}
               .label.label-default= time_ago_in_words(@server.created_at) + ' ago'
           %tr
             %td
               %i.fa.fa-calendar
               Updated
-            %td.middle
+            %td{style: "vertical-align: middle;"}
               .label.label-default= time_ago_in_words(@server.updated_at) + ' ago'
       %h2 
         Share
@@ -215,7 +215,7 @@
       %h2 
         Comments
         .pull-right
-          .btn.btn-primary{id: 'click-btn'} Add Comment
+          .btn.btn-primary.btn-sm{id: 'click-btn'} Add Comment
       %hr
       - if current_user
         %div{id: 'show-form', show: false}

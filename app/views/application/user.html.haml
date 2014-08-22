@@ -1,0 +1,73 @@
+.page-header
+  %h1= @user.username
+
+.container
+  .row
+    %h2 Statistics
+    %hr
+    .col-md-3
+      %strong= time_ago_in_words(@user.created_at) + " ago"
+      %small Registered
+    .col-md-3
+      %strong= @servers.size
+      %small Servers
+    .col-md-3
+      %strong= @user.favorites.size
+      %small Favorites
+    .col-md-3
+      %strong= @user.votes.size
+      %small Votes
+
+  .row
+    %h2 Contact Information
+    %hr
+    - if @user.steam != ""
+      .col-md-3
+        %label 
+          %strong Steam
+        .well.well-sm{style: "width: 75%"}= @user.steam
+    - if @user.twitter != ""
+      .col-md-3
+        %label 
+          %strong Twitter
+        .well.well-sm{style: "width: 75%"}= @user.twitter
+    - if @user.youtube != ""
+      .col-md-3
+        %label 
+          %strong Youtube
+        .well.well-sm{style: "width: 75%"}= @user.youtube
+    - if @user.facebook != ""
+      .col-md-3
+        %label 
+          %strong Facebook
+        .well.well-sm{style: "width: 75%"}= @user.facebook
+    - if @user.skype != ""
+      .col-md-3
+        %label 
+          %strong Skype
+        .well.well-sm{style: "width: 75%"}= @user.skype
+    - if @user.reddit != ""
+      .col-md-3
+        %label 
+          %strong Reddit
+        .well.well-sm{style: "width: 75%"}= @user.reddit
+    - if @user.github != ""
+      .col-md-3
+        %label 
+          %strong Github
+        .well.well-sm{style: "width: 75%"}= @user.github
+    - if @user.twitch != ""
+      .col-md-3
+        %label 
+          %strong Twitch
+        .well.well-sm{style: "width: 75%"}= @user.twitch
+  .row
+    .col-md-12
+      %label
+        %strong About Me:
+      .well= @user.about
+
+  .row
+    %h2 Servers
+    %hr
+    = render 'partials/servers'
