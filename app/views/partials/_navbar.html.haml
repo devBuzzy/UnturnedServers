@@ -27,11 +27,12 @@
                 %i.fa.fa-hdd-o
                 &nbsp
                 All Servers
-            %li
-              %a{href: servers_path(:owner => current_user.username)}
-                %i.fa.fa-user
-                &nbsp
-                My Servers
+            - if current_user
+              %li
+                %a{href: servers_path(:owner => current_user.username)}
+                  %i.fa.fa-user
+                  &nbsp
+                  My Servers
             %li
               %a{href: servers_path}
                 %i.fa.fa-search
