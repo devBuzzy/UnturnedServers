@@ -25,42 +25,50 @@
       .col-md-3
         %label 
           %strong Steam
-        .well.well-sm{style: "width: 75%"}= @user.steam
+        .well.well-sm{style: "width: 75%"}
+          %a{href: "http://steamcommunity.com/groups/#{@user.steam}"}= @user.steam
     - if @user.twitter != ""
       .col-md-3
-        %label 
+        %label
           %strong Twitter
-        .well.well-sm{style: "width: 75%"}= @user.twitter
+        .well.well-sm{style: "width: 75%"}
+          %a{href: @user.twitter}= @user.twitter
     - if @user.youtube != ""
       .col-md-3
         %label 
           %strong Youtube
-        .well.well-sm{style: "width: 75%"}= @user.youtube
+        .well.well-sm{style: "width: 75%"}
+          %a{href: "http://youtube.com/#{@user.youtube}"}= @user.youtube
     - if @user.facebook != ""
       .col-md-3
         %label 
           %strong Facebook
-        .well.well-sm{style: "width: 75%"}= @user.facebook
+        .well.well-sm{style: "width: 75%"}
+          %a{href: @user.facebook}= @user.facebook
     - if @user.skype != ""
       .col-md-3
         %label 
           %strong Skype
-        .well.well-sm{style: "width: 75%"}= @user.skype
+        .well.well-sm{style: "width: 75%"}
+          %a{href: "skype:#{@user.skype}?userinfo"}= @user.skype
     - if @user.reddit != ""
       .col-md-3
         %label 
           %strong Reddit
-        .well.well-sm{style: "width: 75%"}= @user.reddit
+        .well.well-sm{style: "width: 75%"}
+          %a{href: "http://reddit.com/u/#{@user.reddit}"}= @user.reddit
     - if @user.github != ""
       .col-md-3
         %label 
           %strong Github
-        .well.well-sm{style: "width: 75%"}= @user.github
+        .well.well-sm{style: "width: 75%"}
+          %a{href: "http://github.com/#{@user.github}"}= @user.github
     - if @user.twitch != ""
       .col-md-3
         %label 
           %strong Twitch
-        .well.well-sm{style: "width: 75%"}= @user.twitch
+        .well.well-sm{style: "width: 75%"}
+          %a{href: "http://twitch.tv/#{@user.twitch}"}= @user.twitch
   .row
     .col-md-12
       %label
