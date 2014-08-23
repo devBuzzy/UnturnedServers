@@ -16,7 +16,7 @@
 						= text_field :contact, :username, class: 'form-control', value: current_user ? current_user.username : ""
 					%p
 						= label_tag 'Question:'
-						= text_area :contact, :question, class: 'form-control', placeholder: "Enter your question here.", rows: 15
+						= text_area :contact, :question, class: 'form-control', placeholder: "Enter your question here.", rows: 10
 				.modal-footer
 					= submit_tag 'Submit', class: 'btn btn-primary', data: { disable_with: "Voting..." }
 					%button.btn.btn-danger{"data-dismiss" => "modal", :type => "button"} Close

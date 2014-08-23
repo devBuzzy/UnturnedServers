@@ -2,10 +2,12 @@
   %hr/
   %ul.nav.nav-pills.footer
     %li.pull-left
-      \© #{Time.now.year} Unturned Servers
+      %a © #{Time.now.year} Unturned Servers
     %li.pull-right
       %a{href: "#Top"} 
         Back to top
         %i.fa.fa-chevron-up
     %li.pull-right
       %a{href: revisions_path} Revisions
+    %li.pull-right
+      %a{:href => "#contact", "data-toggle" => 'modal'} Contact
