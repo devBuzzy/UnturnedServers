@@ -129,7 +129,7 @@
             %td 
               %i.fa.fa-user
               Owner
-            %td= @server.user.username
+            %td= link_to @server.user.username, user_path(@server.user.username)
           %tr
             %td
               %i.fa.fa-location-arrow

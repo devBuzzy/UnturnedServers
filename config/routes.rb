@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/api', :to => "resources#api", :as => "api"
   get '/stats', :to => "application#stats", :as => "stats"
   get '/user/:username', :to => "application#user", :as => "user"
+  get '/favorites', :to => "application#favorites", :as => "favorites"
   devise_for :users, :controllers => { :registrations => "registrations" }
   resources :servers do
     post :index

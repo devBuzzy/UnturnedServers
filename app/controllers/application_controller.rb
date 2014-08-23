@@ -23,6 +23,16 @@ class ApplicationController < ActionController::Base
     @user = User.all
   end
 
+  def favorites
+    return redirect_to root_path, :notice => "You must be signed in to view your favorites." if not current_user
+    favs = current_user.favorites
+    @servers = Array.new
+    favs.each do |fav|
+      @servers << fav.server
+    end
+    @servers = Kaminari.paginate_array(@servers).page(params[:page])
+  end
+
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation, :remember_me) }
