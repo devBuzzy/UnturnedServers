@@ -19,6 +19,8 @@ body {
     padding: 30px 40px;
 }
 
+a:link.no-deco { text-decoration: none; } 
+
 a:link.server { color: black; text-decoration: none; } 
 a:visited.server { color: black; text-decoration: none; } 
 a:hover.server { color: black; text-decoration: none; } 
