@@ -1,5 +1,5 @@
 class ServersController < ApplicationController
-	before_filter :authenticate_user!, :except => [:index, :show, :banner]
+	before_filter :authenticate_user!, :except => [:index, :show, :banner, :embed]
 
 	def index
 		if params[:search]
@@ -14,7 +14,12 @@ class ServersController < ApplicationController
 		end
 		@servers = Server.desc("vote_count").page(params[:page])
 	end
-	
+
+	def embed
+		render :nothing => true
+		@server = Server.find(params[:server_id])
+	end
+
 	def show
 		@server = Server.find(params[:id])
 		return redirect_to servers_path, :alert => 'That server does not exist.' if @server == nil

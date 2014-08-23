@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     post :cast_vote
     get :vote
     get :banner
+    get :embed
   end
   resources :revisions
   get 'ping' => proc {|env| [200, {}, []] }

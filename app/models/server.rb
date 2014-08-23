@@ -50,13 +50,20 @@ class Server
   def tag_names
     valid_tags = Server.tag_texts
     unknown = 0
+    found_tags = Array.new
     tags.each do |tag|
+      if found_tags.include?(tag)
+        self.tags.delete_at(valid_tags.index(tag))
+        next
+      end
+      found_tags << tag
+      puts found_tags
       if not valid_tags.include?(tag)
         unknown += 1
       end
     end
     if unknown > 0
-      errors.add :tags, "found one or more unknown tags."
+      errors.add :tags, "are invalid. Please use the provided tags."
     end
   end
 
