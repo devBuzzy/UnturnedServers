@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/version/:version', :to => "servers#index", :as => "version"
   post '/search', :to => "servers#index", :as => "search"
   get '/api', :to => "resources#api", :as => "api"
+  get '/terms', :to => "resources#terms", :as => "terms"
   get '/stats', :to => "application#stats", :as => "stats"
   get '/user/:username', :to => "application#user", :as => "user"
   get '/favorites', :to => "application#favorites", :as => "favorites"
