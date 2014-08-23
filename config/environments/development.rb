@@ -21,4 +21,8 @@ UnturnedServers::Application.configure do
     user_name: ENV["GMAIL_USERNAME"],
     password: ENV["GMAIL_PASSWORD"]
   }
+
+  config.action_dispatch.default_headers = {
+    'X-Frame-Options' => 'ALLOWALL'
+  } 
 end

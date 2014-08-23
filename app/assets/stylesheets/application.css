@@ -12,7 +12,6 @@
  *
  *= require bootstrap.min
  *= require bootstrap-wysihtml5
- *= require_tree .
  */
 
 body {

@@ -12,15 +12,3 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require char_counter
-//= require jquery-tablesorter
-//= require Chart
-//= require bootstrap-wysihtml5
-//= require wysihtml5
-//= require ZeroClipboard
-//= require jquery.textcomplete
-//= require tags_complete
-//= require server-charts
-//= require iframe-util
-
-ZeroClipboard.config( { swfPath: "http://unturned.jake0oo0.me/ZeroClipboard.swf" } );

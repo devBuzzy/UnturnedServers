@@ -1,5 +1,5 @@
 class ServersController < ApplicationController
-	before_filter :authenticate_user!, :except => [:index, :show, :banner, :embed]
+	before_filter :authenticate_user!, :except => [:index, :show, :banner, :embed, :display]
 
 	def index
 		if params[:search]
@@ -16,8 +16,58 @@ class ServersController < ApplicationController
 	end
 
 	def embed
-		render :nothing => true
 		@server = Server.find(params[:server_id])
+		type = params[:type]
+		@text = ""
+		@url = ""
+		@height = 34
+		@width = 191
+		if type
+			if type == "favorites"
+				@url = new_server_favorite_url(@server)
+				@text = "Like on Unturned ServerZ"
+			else
+				@url = server_vote_url(@server)
+				@text = "Vote on Unturned ServerZ"
+			end
+		else
+			@url = server_vote_url(@server)
+			@text = "Vote on Unturned ServerZ"
+		end
+		size = params[:size]
+		@class = ""
+		if size
+			if size == "large"
+				@class = "btn-lg"
+				@height = 45
+				@width = 243
+			elsif size == "small"
+				@class = "btn-sm"
+				@height = 30
+				@width = 162
+			end
+		end
+		@color = params[:color] ? params[:color] : "primary"
+		render :layout => "embed"
+	end
+
+	def display
+		@height = 34
+		@width = 191
+		@server = Server.find(params[:server_id])
+		@type = params[:type]
+		@color = params[:type]
+		@size = params[:size]
+		if @size == "large"
+			@height = 45
+			@width = 243
+		elsif @size == "small"
+			@height = 30
+			@width = 162
+		end
+		respond_to do |format|
+    	format.js
+  	end
 	end
 
 	def show

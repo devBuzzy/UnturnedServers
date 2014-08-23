@@ -147,15 +147,29 @@
               Updated
             %td{style: "vertical-align: middle;"}
               .label.label-default= time_ago_in_words(@server.updated_at) + ' ago'
-      %h2 
-        Share
-        %small 
-          Promote Your Server
+      %h2 Embeddable Buttons
       %hr
-      %span.st_facebook_large{:displaytext => "Facebook"}
-      %span.st_googleplus_large{:displaytext => "Google +"}
-      %span.st_twitter_large{:displaytext => "Tweet"}
-      %span.st_email_large{:displaytext => "Email"}
+      .div
+        %p
+          %iframe{src: server_embed_path(@server), scrolling: "no", frameborder: 0, id:"votes-reg", onLoad: "autoResize('votes-reg');", height: "1"}
+          %br/
+          %a.btn.btn-primary.btn-sm{data: {toggle: "collapse", target: "#code1"}} Code
+          %textarea.collapse.form-control{rows: 3, id: "code1"}= "<script src='#{server_display_url(@server)}'></script>"
+        %p
+          %iframe{src: server_embed_path(@server, size: "small"), scrolling: "no", frameborder: 0, id:"votes-sm", onLoad: "autoResize('votes-sm');", height: "1"}
+          %br/
+          %a.btn.btn-primary.btn-sm{data: {toggle: "collapse", target: "#code2"}} Code
+          %textarea.collapse.form-control{rows: 3, id: "code2"}= "<script src='#{server_display_url(@server, size: "small")}'></script>"
+        %p
+          %iframe{src: server_embed_path(@server, type: "favorites"), scrolling: "no", frameborder: 0, id:"favorites-reg", onLoad: "autoResize('favorites-reg');", height: "1"}
+          %br/
+          %a.btn.btn-primary.btn-sm{data: {toggle: "collapse", target: "#code3"}} Code
+          %textarea.collapse.form-control{rows: 3, id: "code3"}= "<script src='#{server_display_url(@server, type: "favorites")}'></script>"
+        %p
+          %iframe{src: server_embed_path(@server, type: "favorites", size: "small"), scrolling: "no", frameborder: 0, id:"favorites-sm", onLoad: "autoResize('favorites-sm');", height: "1"}
+          %br/
+          %a.btn.btn-primary.btn-sm{data: {toggle: "collapse", target: "#code4"}} Code
+          %textarea.collapse.form-control{rows: 3, id: "code4"}= "<script src='#{server_display_url(@server, type: "favorites", size: "small")}'></script>"
     .col-md-6{id: "stats-col"}
       %h2 Statistics
       %hr
@@ -205,6 +219,15 @@
             }
             return data;
           }
+      %h2 
+        Share
+        %small 
+          Promote This Server
+      %hr
+      %span.st_facebook_large{:displaytext => "Facebook"}
+      %span.st_googleplus_large{:displaytext => "Google +"}
+      %span.st_twitter_large{:displaytext => "Tweet"}
+      %span.st_email_large{:displaytext => "Email"}       
   .row
     .col-md-12
       %h2 Description

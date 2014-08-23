@@ -79,4 +79,8 @@ UnturnedServers::Application.configure do
     port: 25,
     enable_starttls_auto: false
   }
+
+  config.action_dispatch.default_headers = {
+    'X-Frame-Options' => 'ALLOWALL'
+  }
 end
