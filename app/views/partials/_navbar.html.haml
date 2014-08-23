@@ -12,36 +12,69 @@
         %li.dropdown{class: set_active("servers")}
           %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
             %i.fa.fa-hdd-o
+            &nbsp
             Servers
             %i.fa.fa-caret-down
           %ul.dropdown-menu{role: "menu"}
-            %li= link_to 'New Server', new_server_path
+            %li
+              %a{href: new_server_path}
+                %i.fa.fa-plus
+                &nbsp
+                New Server
             %li.divider
-            %li= link_to 'All Servers', servers_path
-            %li= link_to 'My Servers', servers_path(:owner => current_user.username)
-            %li= link_to 'Search Servers', servers_path
+            %li
+              %a{href: servers_path}
+                %i.fa.fa-hdd-o
+                &nbsp
+                All Servers
+            %li
+              %a{href: servers_path(:owner => current_user.username)}
+                %i.fa.fa-user
+                &nbsp
+                My Servers
+            %li
+              %a{href: servers_path}
+                %i.fa.fa-search
+                &nbsp
+                Search Servers
         %li
           %a{href: new_server_path}
             %i.fa.fa-plus
+            &nbsp
             New Server
         %li.dropdown{class: set_active("resources")}
           %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
             %i.fa.fa-book
+            &nbsp
             Resources
             %i.fa.fa-caret-down
           %ul.dropdown-menu{role: "menu"}
-            %li= link_to 'Get Unturned', 'http://smartlydressedgames.com/unturned/'
-            %li= link_to 'Unturned Wiki', 'http://unturned.wikia.com/wiki/Unturned_Bunker_Wiki'
-            %li= link_to 'API Documentation', api_path
+            %li
+              %a{href: 'http://smartlydressedgames.com/unturned/'}
+                %i.fa.fa-gamepad
+                &nbsp
+                Get Unturned
+            %li
+              %a{href: 'http://unturned.wikia.com/wiki/Unturned_Bunker_Wiki'}
+                %i.fa.fa-laptop
+                &nbsp
+                Unturned Wiki
+            %li
+              %a{href: api_path}
+                %i.fa.fa-code
+                &nbsp
+                API Documentation
       %ul.nav.navbar-nav.navbar-right
         %li.dropdown
           %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
             - if current_user
               = current_user.username
+              &nbsp  
             %i.fa.fa-user
           %ul.dropdown-menu{role: "menu"}
             - if current_user
-              %li= link_to 'My Servers', servers_path(:owner => current_user.username)
+              %li
+                %a{href: servers_path(:owner => current_user.username)} My Servers
               %li= link_to 'Favorited', favorites_path
               %li= link_to 'View Profile', user_path(current_user.username)
               %li= link_to 'Edit Account', edit_user_registration_path
