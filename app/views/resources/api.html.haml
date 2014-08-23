@@ -1,3 +1,35 @@
 .page-header
   %h1 API Usage
 
+.text-center
+  Unturned Servers has a data API available to the public. To find out how to use it, follow the guide below.
+
+#accordion.panel-group{style: 'margin-top: 10px;'}
+  .panel.panel-default
+    .panel-heading
+      %h4.panel-title
+        %a{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#server"}
+          Single Server API
+    #server.panel-collapse.collapse.in
+      .panel-body
+        Access to the Single Server API is available through the URL:
+        %br/
+        %code http://unturned.jake0oo0.me/&lt;server_id&gt;.json
+        %br/
+        This URL will provide all the necessary information about a server.
+  .panel.panel-default
+    .panel-heading
+      %h4.panel-title
+        %a{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#servers"}
+          Server Listings API
+    #servers.panel-collapse.collapse
+      .panel-body
+        The Server Listings API is not yet implemented.
+  .panel.panel-default
+    .panel-heading
+      %h4.panel-title
+        %a{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#search"}
+          Search API
+    #search.panel-collapse.collapse
+      .panel-body
+        The Server Search API is not yet implemented.
