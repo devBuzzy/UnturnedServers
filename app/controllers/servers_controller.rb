@@ -133,6 +133,6 @@ class ServersController < ApplicationController
 
 	private
 	def server_params
-		params.require(:server).permit(:twitter, :facebook, :reddit, :youtube, :website, :steam, :tags, :tag_string, :banner, :banner_cache, :slots, :title, :ip, :port, :pvp, :info, :gold, :location, :version, :difficulty, :sync, :map)
+		params.require(:server).permit(:twitter, :facebook, :reddit, :youtube, :website, :steam, :tags, :tag_string, :banner, :banner_cache, :slots, :title, :ip, :port, :pvp, :info, :gold, :country, :version, :difficulty, :sync, :map)
 	end
 end

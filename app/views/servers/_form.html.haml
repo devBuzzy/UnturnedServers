@@ -18,9 +18,9 @@
         %br/
         = f.text_field :port, class: 'form-control', value: 25444
       %p
-        = f.label :location
+        = f.label :country
         %br/
-        = f.select :location, options_for_select([["North America", "north-america"], ["South America", "south-america"], ["Europe", "europe"], ["Asia", "asia"], ["Australia", "australia"], ["Africa", "africa"]]), {}, class: "form-control"
+        = country_select("server", "country", {}, {class: 'form-control'})
     .col-md-4
       %p
         = f.label :slots

@@ -19,7 +19,7 @@ namespace :db do
       server.port = Faker::Number.number(5)
       server.pvp = [true, false].sample
       server.map = "P.E.I"
-      server.location = ["north-america", "africa", "australia", "europe"].sample
+      server.country = ["US"].sample
       server.difficulty = ["normal", "hardcore", "gold", "bambi"].sample
       server.version = ["2.2.4", "2.2.5"].sample
       server.sync = [true, false].sample

@@ -1,0 +1,13 @@
+= form_for(@article) do |f|
+  .row
+    .col-md-12
+      %p
+        = f.label :title
+        %br/
+        = f.text_field :title, class: 'form-control', style: "width: 45%"
+      %p
+        = f.label :text
+        %br/
+        = f.text_area :text, class: 'form-control wysihtml5', rows: 15, style: "width: 75%"
+      %p
+        = f.submit 'Submit', class: 'btn btn-primary'

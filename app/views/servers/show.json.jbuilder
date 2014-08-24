@@ -3,7 +3,7 @@ json.created_at @server.created_at
 json.updated_at @server.updated_at
 json.name @server.title
 json.tags @server.tags
-json.location @server.location
+json.country @server.country
 json.connection do
 	json.ip @server.ip
 	json.port @server.port

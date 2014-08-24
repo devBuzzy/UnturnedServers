@@ -16,6 +16,7 @@ gem 'bootstrap-wysihtml5-rails'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'mini_magick'
 gem 'mongoid_search', github: "Jake0oo0/mongoid_search"
+gem 'country_select', github: 'stefanpenner/country_select'
 group :development do
 	gem 'better_errors'
   gem 'faker'

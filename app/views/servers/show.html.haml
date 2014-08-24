@@ -134,7 +134,9 @@
             %td
               %i.fa.fa-location-arrow
               Location
-            %td= @server.location.gsub('-', ' ').titleize
+            %td{style: "vertical-align: middle;"}
+              = @server.country_name
+              = @server.get_flag
           %tr
             %td 
               %i.fa.fa-calendar-o

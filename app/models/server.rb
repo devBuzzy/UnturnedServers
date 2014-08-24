@@ -18,6 +18,15 @@ class Server
     end
   end
 
+  def get_flag
+    return "<img src='blank.gif' class='flag flag-#{self.country}' alt='#{self.country_name}' />".html_safe
+  end
+
+  def country_name
+    country = ISO3166::Country[self.country]
+    country.translations[I18n.locale.to_s] || country.name
+  end
+
   def self.tag_texts
     tag_models = Tag.only(:text).all.to_a
     valid_tags = Array.new
@@ -72,7 +81,7 @@ class Server
   validates :port, presence: true
   validates_numericality_of :port
   validates :info, presence: true
-  validates :location, presence: true
+  validates :country, presence: true
   validates :version, presence: true
   validates :slots, presence: true
   validates_numericality_of :slots
@@ -84,7 +93,7 @@ class Server
   field :ip, type: String, default: ""
   field :port, type: Integer, default: 25544
   field :info, type: String, default: ""
-  field :location, type: String, default: ""
+  field :country, type: String, default: ""
   field :version, type: String, default: ""
   field :slots, type: Integer, default: 8
 
@@ -100,7 +109,7 @@ class Server
   field :tags, type: Array, default: []
 
   has_many :reports, dependent: :destroy
-  has_many :comments, dependent: :destroy
+  has_many :comments, as: :posts, dependent: :destroy
   has_many :votes, dependent: :destroy
   field :vote_count, type: Integer, default: 0
   has_many :favorites, dependent: :destroy

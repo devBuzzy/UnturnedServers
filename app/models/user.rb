@@ -48,6 +48,7 @@ class User
   has_many :comments, dependent: :destroy
   has_many :votes, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :articles
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup

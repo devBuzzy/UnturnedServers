@@ -24,5 +24,6 @@ Rails.application.routes.draw do
     get :display
   end
   resources :revisions
+  resources :articles
   get 'ping' => proc {|env| [200, {}, []] }
 end
