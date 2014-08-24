@@ -4,17 +4,25 @@
     %li.pull-left
       %a © #{Time.now.year} Unturned Servers
     %li.pull-right
-      %a{href: "#Top"} 
-        Back to top
+      %a{href: "#Top"}
         %i.fa.fa-chevron-up
+        Back to top
     %li.pull-right
-      %a{href: terms_path} Terms
+      %a{href: terms_path} 
+        %i.fa.fa-pencil
+        Terms
     %li.pull-right
-      %a{href: revisions_path} Revisions
+      %a{href: revisions_path} 
+        %i.fa.fa-code
+        Revisions
     %li.pull-right
-      %a{href: "#contact", "data-toggle" => 'modal'} Contact
+      %a{href: "#contact", "data-toggle" => 'modal'}
+        %i.fa.fa-envelope
+        Contact
     %li.pull-right
-      %a{href: stats_path} Stats
+      %a{href: stats_path} 
+        %i.fa.fa-signal
+        Stats
   %a.twitter-follow-button.pull-right{"data-show-count" => "false", :href => "https://twitter.com/UnturnedServerz"} Follow @UnturnedServerz
   :javascript
     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');

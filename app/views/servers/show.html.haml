@@ -135,8 +135,8 @@
               %i.fa.fa-location-arrow
               Location
             %td{style: "vertical-align: middle;"}
-              = @server.country_name
-              = @server.get_flag
+              %span{style: "vertical-align: middle;"}= @server.get_flag
+              %span{style: "vertical-align: middle;"}= @server.country_name
           %tr
             %td 
               %i.fa.fa-calendar-o

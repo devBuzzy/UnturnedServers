@@ -4,5 +4,6 @@ class Comment
   validates :text, presence: true
   field :text, type: String
 
-  belongs_to :post, polymorphic: true
+  belongs_to :user
+  belongs_to :server
 end

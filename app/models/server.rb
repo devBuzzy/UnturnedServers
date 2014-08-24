@@ -109,7 +109,7 @@ class Server
   field :tags, type: Array, default: []
 
   has_many :reports, dependent: :destroy
-  has_many :comments, as: :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :votes, dependent: :destroy
   field :vote_count, type: Integer, default: 0
   has_many :favorites, dependent: :destroy

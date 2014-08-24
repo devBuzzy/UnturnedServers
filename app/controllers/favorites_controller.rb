@@ -10,7 +10,6 @@ class FavoritesController < ApplicationController
 
   def show
     @server = Server.find(params[:server_id])
-    @favorite = @server.favorites.find(params[:favorite_id])
     return redirect_to @server
   end
 

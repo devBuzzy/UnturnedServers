@@ -1,6 +1,5 @@
 class ServersController < ApplicationController
-	before_filter :authenticate_user!, :except => [:index, :show, :banner, :embed, :display]
-
+	before_filter :authenticate_user!, :except => [:index, :show, :banner, :embed, :display, :vote]
 	def index
 		if params[:search]
 			query = params[:search][:query]
@@ -81,11 +80,13 @@ class ServersController < ApplicationController
 
 	def edit
 		@server = Server.find(params[:id])
+		return redirect_to servers_path if not can_manage(@server)
 		@server.tag_list
 	end
 
 	def update
 		@server = Server.find(params[:id])
+		return redirect_to servers_path if not can_manage(@server)
 		if @server.update(server_params)
 			redirect_to @server, :notice => 'Successfully made changes to a server.'
 		else
@@ -104,8 +105,9 @@ class ServersController < ApplicationController
 
 	def destroy
 		@server = Server.find(params[:id])
+		return redirect_to servers_path if not can_manage(@server)
 		@server.destroy
-		redirect_to servers_path
+		redirect_to servers_path, :notice => "Successfully deleted a server."
 	end
 
 	def vote
@@ -114,11 +116,11 @@ class ServersController < ApplicationController
 
 	def cast_vote
 		@server = Server.find(params[:server_id])
-		return redirect_to @server, :alert => 'You can not vote for your own server.' if @server.user == current_user
-		return redirect_to @server, :alert => 'You can only vote once every 24 hours.' if @server.votes.where(created_at: ((Time.now - 24.hour) ..(Time.now))).where(user: current_user).any?
+		return redirect_to @server, :alert => 'You can not vote for your own server.' if @server.user.current_sign_in_ip == request.remote_ip or (current_user and @server.user == current_user)
+		return redirect_to @server, :alert => 'You can only vote once every 24 hours.' if @server.votes.where(created_at: ((Time.now - 24.hour) ..(Time.now))).where(ip: request.remote_ip).any?
 		captcha = params['form']['captcha']
 		return redirect_to @server if captcha != 'zombie'
-		@vote = Vote.create(:server => @server, :user => current_user)
+		@vote = Vote.create(:server => @server, :ip => request.remote_ip)
 		return redirect_to @server, :notice => 'Successfully voted.'
 	end
 

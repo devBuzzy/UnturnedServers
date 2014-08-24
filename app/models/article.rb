@@ -7,5 +7,4 @@ class Article
   field :title
 
   belongs_to :user
-  has_many :comments, as: :posts, dependent: :destroy
 end

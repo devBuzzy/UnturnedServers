@@ -9,6 +9,7 @@ class ReportsController < ApplicationController
 
   def edit
     @server = Server.find(params[:server_id])
+    return redirect_to @server, :alert => 'You do not have permission to edit this report.' unless current_user.try(:admin)
     @report = @server.reports.find(params[:report_id])
   end
 
