@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "servers#index"
+  root "articles#index"
   post '/contact', :to => "application#contact"
   get '/tag/:tag', :to => "servers#index", :as => "tag"
   get '/version/:version', :to => "servers#index", :as => "version"
