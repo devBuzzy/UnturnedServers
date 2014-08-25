@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
-  before_filter :require_admin!, except: [:index, :show]
+  before_filter :require_admin, except: [:index, :show]
   def index
     @articles = Article.desc(:created_at)
   end
