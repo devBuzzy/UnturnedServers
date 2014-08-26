@@ -10,6 +10,7 @@ class Server
   attr_accessor :tag_string
 
   def convert_tags
+    return if !self.tag_string
     self.tags = self.tag_string.split(', ')
     self.tags.each do |tag|
       if tag == " "

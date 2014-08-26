@@ -2,7 +2,7 @@ namespace :db do
   task :populate => :environment do
     require 'faker'
     desc "Create 100 users with random names and descriptions"
-    50.times do
+    1.times do
       user = User.new
       user.username = Faker::Internet.user_name
       user.email = Faker::Internet.email
@@ -11,10 +11,7 @@ namespace :db do
       puts "Saved new user."
     end
     users = User.all.shuffle.to_a
-    tags = Array.new
-    Tag.all(:validate => false).shuffle.to_a.each do |model|
-      tags << model.text
-    end
+    tags = ["PvP", "Sync", "No Sync", "Hardcore", "Normal", "Custom Map", "P.E.I."]
     100.times do 
       server = Server.new
       server.user = users.sample
@@ -22,7 +19,7 @@ namespace :db do
       server.info = Faker::Lorem.paragraph(2)
       server.ip = Faker::Internet.ip_v4_address
       server.port = Faker::Number.number(5)
-      server.country = ["US"].sample
+      server.country = ["US", "CA", "MX", "UK"].sample
       server.tags << tags.sample
       server.tags << tags.sample
       server.tags << tags.sample
