@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   post '/contact', :to => "application#contact"
   get '/tag/:tag', :to => "servers#index", :as => "tag"
   get '/version/:version', :to => "servers#index", :as => "version"
-  post '/search/:search', :to => "servers#index", :as => "search"
+  #post '/search/', :to => "servers#index", :as => "search"
   get '/api', :to => "resources#api", :as => "api"
   get '/terms', :to => "resources#terms", :as => "terms"
   get '/stats', :to => "application#stats", :as => "stats"
