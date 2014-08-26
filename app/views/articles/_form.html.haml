@@ -1,4 +1,5 @@
 = form_for(@article) do |f|
+  = render 'partials/errors', object: @article
   .row
     .col-md-12
       %p
