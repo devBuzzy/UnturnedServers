@@ -135,7 +135,8 @@
               %i.fa.fa-location-arrow
               Location
             %td{style: "vertical-align: middle;"}
-              %span{style: "vertical-align: middle;"}= @server.get_flag
+              %a{href: country_path(server.country), id: server.country, alt: server.country_name}
+                %span=server.get_flag
               %span{style: "vertical-align: middle;"}= @server.country_name
           %tr
             %td 
