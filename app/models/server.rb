@@ -52,7 +52,7 @@ class Server
   end
 
   def get_flag
-    return "<img src='blank.gif' class='flag flag-#{self.country}' alt='#{self.country_name}' />".html_safe
+    return "<img src='' class='flag flag-#{self.country}' alt='#{self.country_name}' />".html_safe
   end
 
   def country_name

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/tag/:tag', :to => "servers#index", :as => "tag"
   get '/version/:version', :to => "servers#index", :as => "version"
   #post '/search/', :to => "servers#index", :as => "search"
+  get '/country/:country', :to => "servers#index", :as => "country"
   get '/api', :to => "resources#api", :as => "api"
   get '/terms', :to => "resources#terms", :as => "terms"
   get '/stats', :to => "application#stats", :as => "stats"
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
     get :banner
     get :embed
     get :display
+    get :cloud
   end
   resources :revisions
   resources :articles

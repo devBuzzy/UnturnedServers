@@ -3,6 +3,10 @@ class TagsController < ApplicationController
     @tags = Tag.all
   end
 
+  def cloud
+    @tags = Tag.all
+  end
+
   def new
     @tag = Tag.new
   end

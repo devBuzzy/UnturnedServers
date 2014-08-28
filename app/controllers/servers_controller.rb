@@ -4,6 +4,8 @@ class ServersController < ApplicationController
 		if params[:search]
 			query = params[:search][:query]
 			return @servers = Server.full_text_search(query, allow_empty_search: true).desc("vote_count").page(params[:page])
+		elsif params[:country]
+			return @servers = Server.where(:country => params[:country]).desc("vote_count").page(params[:page])
 		elsif params[:tag]
 			tag = Tag.find_by(text: params[:tag])
 			return @servers = tag.servers.desc("vote_count").page(params[:page])
