@@ -5,7 +5,8 @@ class ServersController < ApplicationController
 			query = params[:search][:query]
 			return @servers = Server.full_text_search(query, allow_empty_search: true).desc("vote_count").page(params[:page])
 		elsif params[:tag]
-			return @servers = Server.any_in(tags: [params[:tag]]).desc("vote_count").page(params[:page])
+			tag = Tag.find_by(text: params[:tag])
+			return @servers = tag.servers.desc("vote_count").page(params[:page])
 		elsif params[:version]
 			return @servers = Server.where(version: params[:version].gsub("-", ".")).desc("vote_count").page(params[:page]) 
 		elsif params[:owner]
@@ -81,7 +82,6 @@ class ServersController < ApplicationController
 	def edit
 		@server = Server.find(params[:id])
 		return redirect_to servers_path if not can_manage(@server)
-		@server.tag_list
 	end
 
 	def update

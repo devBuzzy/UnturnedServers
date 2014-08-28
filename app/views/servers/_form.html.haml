@@ -36,9 +36,9 @@
       %small Minimum of 1, Maximum of 5
     %p
       = f.label :tag_string, "Tags"
-      = f.text_field :tag_string, class: 'form-control', id: "tags-box", placeholder: 'Enter tags here...', style: "width: 60%;", autocomplete: "off"
-      /:javascript
-      /  tagsComplete(#{raw Server.tag_texts.as_json}, "#tags-box")
+      = f.text_field :tag_string, class: 'form-control', id: "tags-box", placeholder: 'Enter tags here...', style: "width: 60%;", autocomplete: "off", value: @server.tag_text
+      :javascript
+        tagsComplete(#{raw Server.valid_tags.as_json}, "#tags-box")
       .help-block Seperate tags with a comma.
   .row
     %h2 

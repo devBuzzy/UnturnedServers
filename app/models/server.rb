@@ -3,10 +3,11 @@ class Server
   include Mongoid::Timestamps
   mount_uploader :banner, BannerUploader
   before_save :update_vote_count
-  before_save :assign_tags
+  before_validation :assign_tags
 
   attr_accessor :tag_string
 
+  validate :tag_count
   validate :check_dimensions, :on => :create
   validates :title, presence: true
   validates :ip, presence: true, uniqueness: true
@@ -42,6 +43,14 @@ class Server
   has_and_belongs_to_many :tags
   belongs_to :user
 
+  def tag_text
+    self.tags.distinct(:text).join(", ")
+  end
+
+  def self.valid_tags
+    Tag.all.distinct(:text)
+  end
+
   def get_flag
     return "<img src='blank.gif' class='flag flag-#{self.country}' alt='#{self.country_name}' />".html_safe
   end
@@ -63,11 +72,15 @@ class Server
   end
 
   def assign_tags
-    puts "HEREEEEEEEEEEEEEEE", self.tag_string
     if self.tag_string
-      self.tags = self.tag_string.gsub(/s+/,"").split(/,/).uniq.map do |name|
+      self.tags = self.tag_string.gsub(" ", "").split(",").uniq.map do |name|
+        next if not Tag.where(:text => name.strip).any?
         Tag.where(:text => name.strip)
       end
     end
+  end
+
+  def tag_count
+    errors.add :tags, "are invalid. Use between 1 and 5 tags." unless (self.tags.size >= 1 and self.tags.size <= 5)
   end
 end
