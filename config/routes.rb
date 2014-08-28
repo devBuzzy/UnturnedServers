@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/stats', :to => "application#stats", :as => "stats"
   get '/user/:username', :to => "application#user", :as => "user"
   get '/favorites', :to => "application#favorites", :as => "favorites"
+  get '/cloud', :to => "application#cloud", :as => "cloud"
   devise_for :users, :controllers => { :registrations => "registrations" }
   resources :servers do
     post :index
@@ -23,7 +24,6 @@ Rails.application.routes.draw do
     get :banner
     get :embed
     get :display
-    get :cloud
   end
   resources :revisions
   resources :articles

@@ -43,6 +43,10 @@ class Server
   has_and_belongs_to_many :tags
   belongs_to :user
 
+  def self.tag_counts
+    Tag.all
+  end
+
   def tag_text
     self.tags.distinct(:text).join(", ")
   end
