@@ -43,8 +43,8 @@
               %a.tag{href: version_path(server.version.gsub(".", "-"))}
                 %span.badge=server.version
               - server.tags.each do |tag|
-                %a.tag{href: tag_path(tag)}
-                  %span.badge{style: "margin-bottom: 3px;"}=tag
+                %a.tag{href: tag_path(tag.text)}
+                  %span.badge{style: "margin-bottom: 3px;"}=tag.text
           %td{style: "width: 10%; vertical-align: middle; font-size: 20px;"}
             %span.label.label-warning N/A
   = paginate @servers

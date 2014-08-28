@@ -123,8 +123,8 @@
             %td{style: "width: 65%"}
               .div
                 - @server.tags.each do |tag|
-                  %a.tag{href: tag_path(tag)}
-                    %span.badge{style: "display: inline-block;"}=tag
+                  %a.tag{href: tag_path(tag.text)}
+                    %span.badge{style: "display: inline-block;"}=tag.text
           %tr
             %td 
               %i.fa.fa-user
