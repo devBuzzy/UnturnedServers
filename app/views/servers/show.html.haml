@@ -154,24 +154,24 @@
       %hr
       .div
         %p
-          %iframe{src: server_embed_path(@server), scrolling: "no", frameborder: 0, id:"votes-reg", onLoad: "autoResize('votes-reg');", height: "1"}
-          %br/
-          %a.btn.btn-primary.btn-sm{data: {toggle: "collapse", target: "#code1"}} Code
+          .inline-form
+            %a.btn{class: "btn-primary", href: server_vote_url(@server), target: '_blank'} Vote on Unturned ServerZ
+            %a.btn.btn-default.btn-sm{data: {toggle: "collapse", target: "#code1"}} Code
           %textarea.collapse.form-control{rows: 3, id: "code1"}= "<script src='#{server_display_url(@server)}'></script>"
         %p
-          %iframe{src: server_embed_path(@server, size: "small"), scrolling: "no", frameborder: 0, id:"votes-sm", onLoad: "autoResize('votes-sm');", height: "1"}
-          %br/
-          %a.btn.btn-primary.btn-sm{data: {toggle: "collapse", target: "#code2"}} Code
+          .inline-form
+            %a.btn{class: "btn-primary btn-sm", href: server_vote_url(@server), target: '_blank'} Vote on Unturned ServerZ
+            %a.btn.btn-default.btn-sm{data: {toggle: "collapse", target: "#code2"}} Code
           %textarea.collapse.form-control{rows: 3, id: "code2"}= "<script src='#{server_display_url(@server, size: "small")}'></script>"
         %p
-          %iframe{src: server_embed_path(@server, type: "favorites"), scrolling: "no", frameborder: 0, id:"favorites-reg", onLoad: "autoResize('favorites-reg');", height: "1"}
-          %br/
-          %a.btn.btn-primary.btn-sm{data: {toggle: "collapse", target: "#code3"}} Code
+          .inline-form
+            %a.btn{class: "btn-primary", href: new_server_favorite_url(@server), target: '_blank'} Like on Unturned ServerZ
+            %a.btn.btn-default.btn-sm{data: {toggle: "collapse", target: "#code3"}} Code
           %textarea.collapse.form-control{rows: 3, id: "code3"}= "<script src='#{server_display_url(@server, type: "favorites")}'></script>"
         %p
-          %iframe{src: server_embed_path(@server, type: "favorites", size: "small"), scrolling: "no", frameborder: 0, id:"favorites-sm", onLoad: "autoResize('favorites-sm');", height: "1"}
-          %br/
-          %a.btn.btn-primary.btn-sm{data: {toggle: "collapse", target: "#code4"}} Code
+          .inline-form
+            %a.btn{class: "btn-primary btn-sm", href: new_server_favorite_url(@server), target: '_blank'} Like on Unturned ServerZ
+            %a.btn.btn-default.btn-sm{data: {toggle: "collapse", target: "#code4"}} Code
           %textarea.collapse.form-control{rows: 3, id: "code4"}= "<script src='#{server_display_url(@server, type: "favorites", size: "small")}'></script>"
     .col-md-6{id: "stats-col"}
       %h2 Statistics
