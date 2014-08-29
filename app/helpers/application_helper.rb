@@ -29,4 +29,43 @@ module ApplicationHelper
       yield(tag, classes[index.round])
     end
   end
+
+  def get_countries
+    countries = Server.distinct(:country)
+    data = Array.new
+    countries.each do |country|
+      count = Server.where(:country => country).size
+      country_hash = Hash.new
+      country_hash['value'] = count
+      country_hash['label'] = country
+      country_hash['color'] = random_color
+      country_hash['highlight'] = random_color
+      data << country_hash
+    end
+    data
+  end
+
+  def get_versions
+    versions = Server.distinct(:version)
+    data = Array.new
+    versions.each do |version|
+      count = Server.where(:version => version).size
+      version_hash = Hash.new
+      version_hash['value'] = count
+      version_hash['label'] = version
+      version_hash['color'] = random_color
+      version_hash['highlight'] = random_color
+      data << version_hash
+    end
+    data
+  end
+
+  def random_color(hash = true)
+    color = "%06x" % (rand * 0xffffff)
+    if hash
+      return "#" + color
+    else
+      return color
+    end
+  end
 end
