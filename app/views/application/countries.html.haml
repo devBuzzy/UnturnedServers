@@ -1,0 +1,14 @@
+.page-header
+  %h1 
+    Servers by Country
+    .pull-right
+      = link_to 'Back', servers_path, class: 'btn btn-primary'
+
+#none Want to find a server in your own country? Only the top server in each country is shown here but, each header links to more servers in the same country!
+
+- @countries.each do |country|
+  %h2= link_to country_name(country), country_path(country)
+  %hr
+  - @servers = Server.where(:country => country).desc("vote_count").limit(1).to_a
+  - @servers = Kaminari.paginate_array(@servers).page(params[:page])
+  = render 'partials/servers'

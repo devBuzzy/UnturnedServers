@@ -8,6 +8,11 @@ module ApplicationHelper
     end
   end
 
+  def country_name(abbr)
+    country = ISO3166::Country[abbr]
+    country.translations[I18n.locale.to_s] || country.name
+  end
+
   def require_admin
     current_user and current_user.admin?
   end

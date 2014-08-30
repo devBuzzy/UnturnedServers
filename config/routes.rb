@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/favorites', :to => "application#favorites", :as => "favorites"
   get '/cloud', :to => "application#cloud", :as => "cloud"
   post '/search(/:search)', :to => "servers#search", :as => "search"
+  get '/countries', :to => "application#countries", :as => "countries"
   devise_for :users, :controllers => { :registrations => "registrations" }
   resources :servers do
     resources :comments

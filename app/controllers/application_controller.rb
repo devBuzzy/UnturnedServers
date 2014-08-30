@@ -33,6 +33,10 @@ class ApplicationController < ActionController::Base
     @servers = Kaminari.paginate_array(@servers).page(params[:page])
   end
 
+  def countries
+    @countries = Server.distinct(:country)
+  end
+
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation, :remember_me) }
