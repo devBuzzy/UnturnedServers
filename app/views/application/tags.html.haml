@@ -1,0 +1,21 @@
+.page-header
+  %h1 
+    Servers by Tag
+    .pull-right
+      = link_to 'Back', servers_path, class: 'btn btn-primary'
+
+- if not @tags.any?
+  #none No tags are currently being used by any servers.
+- else
+  - @tags.each do |tag|
+    %h2= link_to tag.text, tag_path(tag.text)
+    %hr
+    - @servers = tag.servers.limit(1).desc("vote_count").to_a
+    - @servers = Kaminari.paginate_array(@servers).page(params[:page])
+    = render 'partials/servers'
+
+.row
+  .col-md-12
+    #tag_cloud.center-block{style: "text-align: center;"}
+      - tag_cloud(%w{s m l}) do |tag, css_class|
+        .badge{class: css_class}= link_to tag[0], tag_path(tag[0]), class: 'no-deco'

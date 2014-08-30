@@ -37,6 +37,10 @@ class ApplicationController < ActionController::Base
     @countries = Server.distinct(:country)
   end
 
+  def tags
+    @tags = Tag.gt(count: 0)
+  end
+
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation, :remember_me) }
