@@ -1,10 +1,10 @@
 - content_for :title do 'Servers' end
 .page-header
-  / .pull-right 
-  /   .form-inline
-  /     = form_tag search_path do
-  /       = text_field :search, :query, class: 'form-control', value: params[:search] ? params[:search][:query] : "" 
-  /       = submit_tag "Search", class: "btn btn-primary"
+  .pull-right 
+    .form-inline
+      = form_tag(search_path, :method => :post) do
+        = text_field_tag :search, params[:search], class: 'form-control'
+        = submit_tag "Search", name: nil, class: "btn btn-primary"
   %h1 Server Listings
 
 = render 'partials/servers'

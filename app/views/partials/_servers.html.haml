@@ -48,6 +48,6 @@
                   %span.badge{style: "margin-bottom: 3px;"}=tag.text
           %td{style: "width: 10%; vertical-align: middle; font-size: 20px;"}
             %span.label.label-warning N/A
-  = paginate @servers
+  = paginate @servers, params: {authenticity_token: nil, commit: nil, utf8: nil, action: nil}
 - else
   #none No servers have been submitted yet.

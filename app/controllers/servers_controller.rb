@@ -1,9 +1,8 @@
 class ServersController < ApplicationController
 	before_filter :authenticate_user!, :except => [:index, :show, :banner, :embed, :display, :vote]
 	def index
-		if params[:search]
-			query = params[:search][:query]
-			return @servers = Server.full_text_search(query, allow_empty_search: true).desc("vote_count").page(params[:page])
+		if @servers
+			return @servers
 		elsif params[:country]
 			return @servers = Server.where(:country => params[:country]).desc("vote_count").page(params[:page])
 		elsif params[:tag]
@@ -15,6 +14,12 @@ class ServersController < ApplicationController
 			return @servers = Server.where(:user => User.where(:username => params[:owner]).first).desc("vote_count").page(params[:page])
 		end
 		@servers = Server.desc("vote_count").page(params[:page])
+	end
+
+	def search
+		query = params[:search]
+		@servers = Server.full_text_search(query, allow_empty_search: true).desc("vote_count").page(params[:page])
+		return render action: 'index'
 	end
 
 	def embed

@@ -2,6 +2,7 @@ class Tag
   include Mongoid::Document
   include Mongoid::Timestamps
   before_save :update_count
+  validates_uniqueness_of :text
 
   def update_count
     self.count = self.servers.size

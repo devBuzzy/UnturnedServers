@@ -25,8 +25,12 @@ module ApplicationHelper
     max = tags.sort_by(&:count).last
     tags = tags.shuffle
     tags.each do |tag|
-      index = tag[1].to_f / max[1] * (classes.size - 1)
-      yield(tag, classes[index.round])
+      if tag[1] == 0 and max[1] == 0
+        index = 0
+      else
+        index = tag[1].to_f / max[1] * (classes.size - 1)
+      end
+      yield(tag, classes[index])
     end
   end
 

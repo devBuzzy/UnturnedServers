@@ -1,10 +1,11 @@
 class Server
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Search
   mount_uploader :banner, BannerUploader
   before_save :update_vote_count
   before_validation :assign_tags
-
+  search_in :title, :tags => :text
   attr_accessor :tag_string
 
   validate :tag_count
@@ -40,7 +41,7 @@ class Server
   has_many :comments, dependent: :destroy
   has_many :votes, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_and_belongs_to_many :tags
+  has_and_belongs_to_many :tags, autosave: true
   belongs_to :user
 
   def self.tag_counts
