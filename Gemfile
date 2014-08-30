@@ -26,3 +26,7 @@ group :doc do
 end
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'activeadmin-mongoid', github: 'elia/activeadmin-mongoid', branch: 'rails4'
+gem 'sass-rails', '~> 4.0.3'
+gem 'bourbon', '< 4'
