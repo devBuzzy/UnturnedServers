@@ -7,4 +7,20 @@
         = submit_tag "Search", name: nil, class: "btn btn-primary"
   %h1 Server Listings
 
+.alert.alert-success Welcome to Unturned ServerZ! Feel free to look around and find a server that fits your needs!
+- ori = @servers
+
+- @servers = @sponsored
+%h2 Sponsored Servers
+%hr
+= render 'partials/servers'
+- unless @servers.any?
+  #none 
+    Want to buy a slot?
+    %a{href: "#contact", "data-toggle" => 'modal'}
+      Contact us!
+
+- @servers = ori
+%h2 Unturned Servers
+%hr
 = render 'partials/servers'

@@ -1,0 +1,13 @@
+.page-header
+  %h1 
+    Sponsored Servers
+    .pull-right
+      = link_to 'Back', servers_path, class: 'btn btn-primary'
+
+.alert.alert-success
+  %i.fa.fa-usd
+  Want to buy a slot?
+  %a.alert-link{href: "#contact", "data-toggle" => 'modal'}
+    Contact us!
+
+= render 'partials/servers'

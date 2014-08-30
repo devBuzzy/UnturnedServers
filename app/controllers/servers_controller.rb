@@ -1,6 +1,7 @@
 class ServersController < ApplicationController
 	before_filter :authenticate_user!, :except => [:index, :show, :banner, :embed, :display, :vote]
 	def index
+		@sponsored = Server.where(:sponsored => true)
 		if @servers
 			return @servers
 		elsif params[:country]

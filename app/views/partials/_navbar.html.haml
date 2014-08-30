@@ -27,6 +27,11 @@
                 %i.fa.fa-hdd-o
                 &nbsp
                 All Servers
+            %li
+              %a{href: sponsored_path}
+                %i.fa.fa-usd
+                &nbsp
+                Sponsored Servers
             - if current_user
               %li
                 %a{href: servers_path(:owner => current_user.username)}

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/countries', :to => "application#countries", :as => "countries"
   get '/tags', :to => "application#tags", :as => "tags"
   get '/versions', :to => "application#versions", :as => "versions"
+  get '/sponsored', :to => "application#sponsored", :as => "sponsored"
   devise_for :users, :controllers => { :registrations => "registrations" }
   resources :servers do
     resources :comments

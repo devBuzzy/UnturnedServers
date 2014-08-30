@@ -23,6 +23,10 @@ class ApplicationController < ActionController::Base
     @user = User.all
   end
 
+  def sponsored
+    @servers = Server.where(:sponsored => true)
+  end
+
   def favorites
     return redirect_to root_path, :notice => "You must be signed in to view your favorites." if not current_user
     favs = current_user.favorites

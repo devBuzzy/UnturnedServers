@@ -28,6 +28,7 @@ class Server
   field :country, type: String, default: ""
   field :version, type: String, default: ""
   field :slots, type: Integer, default: 8
+  field :sponsored, type: Boolean, default: false
 
   field :steam, type: String
   field :reddit, type: String
