@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   post '/search(/:search)', :to => "servers#search", :as => "search"
   get '/countries', :to => "application#countries", :as => "countries"
   get '/tags', :to => "application#tags", :as => "tags"
+  get '/versions', :to => "application#versions", :as => "versions"
   devise_for :users, :controllers => { :registrations => "registrations" }
   resources :servers do
     resources :comments

@@ -41,6 +41,10 @@ class ApplicationController < ActionController::Base
     @tags = Tag.gt(count: 0)
   end
 
+  def versions
+    @versions = Server.distinct(:version)
+  end
+
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation, :remember_me) }
