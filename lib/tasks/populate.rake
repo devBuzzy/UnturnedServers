@@ -12,11 +12,11 @@ namespace :db do
     end
     users = User.all.shuffle.to_a
     tags = Tag.all
-    10.times do 
+    1000.times do 
       server = Server.new
       server.user = users.sample
       server.title = Faker::Company.name
-      server.info = Faker::Lorem.paragraph(2)
+      server.info = "This is a really cool server that I made for anyone to come join. I think that you should come join this so that you can have lots of fun with me and my friends who enjoy playing on this server with me. We have lots of cool plugins like free experience, lotsa swag, and even super extra cool vehicles that you can only find on my server! If you want to come join me, just click the connect button at the top! Can't wait to see you on our amazing server. Bye for now, see you soon, can't wait!"
       server.ip = Faker::Internet.ip_v4_address
       server.port = Faker::Number.number(5)
       server.country = ["US", "CA", "MX", "EG"].sample
