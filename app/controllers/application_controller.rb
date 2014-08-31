@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
   include ApplicationHelper
   
+  def authenticate_admin_user!
+    redirect_to root_path unless require_admin
+  end
+
   def contact
     form = params[:contact]
     username = form[:username]
