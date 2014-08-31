@@ -4,7 +4,7 @@ class User
   include Mongoid::Timestamps
 
   devise :database_authenticatable, 
-  :recoverable, :rememberable, :trackable, :validatable
+  :recoverable, :rememberable, :trackable, :validatable, :registerable
 
   attr_accessor :login
 

@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
   root "articles#index"
+  ActiveAdmin.routes(self)
   post '/contact', :to => "application#contact"
   get '/tag/:tag', :to => "servers#index", :as => "tag"
   get '/version/:version', :to => "servers#index", :as => "version"
