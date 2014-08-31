@@ -1,3 +1,7 @@
+- content_for :head do
+  %meta{:content => "Report for Unturned Server #{@server.title}", :name => "description"}
+  %meta{:content => "Servers, Unturned, Server, Report", :name => "keywords"}
+  %meta{:content => "#{@server.user.username}", :name => "author"}
 - content_for :title do 'Server Report' end
 .page-header
   %h1

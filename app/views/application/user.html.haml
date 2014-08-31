@@ -1,3 +1,7 @@
+- content_for :title do "#{@user.username}" end
+- content_for :head do
+  %meta{:content => "Unturned ServerZ profile for #{@user.username}", :name => "description"}
+  %meta{:content => "Servers, Unturned, User, Profile", :name => "keywords"}
 .page-header
   %h1= @user.username
 

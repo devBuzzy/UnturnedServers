@@ -1,4 +1,7 @@
 - content_for :title do "Editing #{@server.title}" end
+- content_for :head do
+  %meta{:content => "Editing Unturned Server", :name => "description"}
+  %meta{:content => "Unturned, Servers, Edit", :name => "keywords"}
 .page-header
   %h1 
     Editing:

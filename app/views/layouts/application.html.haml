@@ -1,10 +1,18 @@
 %head
   %title
     - if content_for? :title
-      Unturned Servers - #{yield :title}
+      Unturned ServerZ - #{yield :title}
     - else
-      Unturned Servers
+      Unturned ServerZ
   %meta{name: "viewport", content: "width=device-width, initial-scale=1, maximum-scale=1"}
+  -if content_for? :head
+    %meta{:charset => "UTF-8"}
+    = yield(:head)
+  - else
+    %meta{:charset => "UTF-8"}
+    %meta{:content => "Unturned Servers List", :name => "description"}
+    %meta{:content => "Servers, Unturned, Game", :name => "keywords"}
+    %meta{:content => "Jake0oo0", :name => "author"}
   = favicon_link_tag
   = stylesheet_link_tag 'http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css'
   = stylesheet_link_tag 'application', media: 'all'
