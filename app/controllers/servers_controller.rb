@@ -8,7 +8,11 @@ class ServersController < ApplicationController
 			return @servers = Server.where(:country => params[:country]).desc("vote_count").page(params[:page])
 		elsif params[:tag]
 			tag = Tag.find_by(text: params[:tag])
-			return @servers = tag.servers.desc("vote_count").page(params[:page])
+			if not tag
+				return redirect_to servers_path, :alert => "That tag does not exist."
+			else
+				return @servers = tag.servers.desc("vote_count").page(params[:page])
+			end
 		elsif params[:version]
 			return @servers = Server.where(version: params[:version].gsub("-", ".")).desc("vote_count").page(params[:page]) 
 		elsif params[:owner]
