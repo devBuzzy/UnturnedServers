@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "articles#index"
+  root "servers#index"
   ActiveAdmin.routes(self)
   post '/contact', :to => "application#contact"
   get '/tag/:tag', :to => "servers#index", :as => "tag"
