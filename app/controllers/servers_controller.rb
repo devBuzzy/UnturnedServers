@@ -7,7 +7,7 @@ class ServersController < ApplicationController
 		elsif params[:country]
 			return @servers = Server.where(:country => params[:country]).desc("vote_count").page(params[:page])
 		elsif params[:tag]
-			tag = Tag.find_by(text: params[:tag])
+			tag = Tag.where(text: params[:tag]).first
 			if not tag
 				return redirect_to servers_path, :alert => "That tag does not exist."
 			else
