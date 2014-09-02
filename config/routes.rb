@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get '/tags', :to => "application#tags", :as => "tags"
   get '/versions', :to => "application#versions", :as => "versions"
   get '/sponsored', :to => "application#sponsored", :as => "sponsored"
+  get '/resources/sponsored', :to => "resources#sponsored", :as => "sponsored_resource"
   devise_for :users, :controllers => { :registrations => "registrations" }
   resources :servers do
     resources :comments
