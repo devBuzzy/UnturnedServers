@@ -110,8 +110,7 @@
               %li= link_to 'Sign up', new_user_registration_path
               %li= link_to 'Login', new_user_session_path
       %ul.nav.navbar-nav.navbar-right
-        %li
-          %a.hidden-xs{href: "http://reddit.com/r/Unturned", class: "navbar-brand"}
-            %img.hidden-xs{src: "/reddit-logo.png"}
-          %a.hidden-xs{href: "http://twitter.com/UnturnedServerz", class: "navbar-brand"}
-            %img.hidden-xs{src: "/twitter-logo.png"}
+        %li{style: "margin-left: 20px;"}
+          %a.hidden-xs{href: "http://reddit.com/r/Unturned", class: "navbar-brand", style: "background: url(/reddit-logo.png) no-repeat; width: 64px; height: 64px;"}
+        %li{style: "margin-left: 20px;"}
+          %a.hidden-xs{href: "http://twitter.com/UnturnedServerz", class: "navbar-brand", style: "background: url(/twitter-logo.png) no-repeat; width: 64px; height: 64px;"}
