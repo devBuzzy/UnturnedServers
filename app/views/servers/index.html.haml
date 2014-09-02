@@ -10,7 +10,15 @@
         = submit_tag "Search", name: nil, class: "btn btn-primary"
   %h1 Server Listings
 
-.alert.alert-success Welcome to Unturned ServerZ! Feel free to look around and find a server that fits your needs!
+.alert.alert-success 
+  Welcome to Unturned ServerZ! Feel free to look around and find a server that fits your needs!
+  Make sure to share Unturned ServerZ with your friends to help us grow!
+  %span.st__hcount{:displaytext => ""}
+  %span.st_fblike_hcount{:displaytext => "Facebook Like"}
+  %span.st_plusone_hcount{:displaytext => "Google +1"}
+  %script{:src => "http://w.sharethis.com/button/buttons.js", :type => "text/javascript"}
+  :javascript
+    stLight.options({publisher: "c2e6e60e-c42d-4a9b-a6c5-0ca8e2f39a96", doNotHash: false, doNotCopy: false, hashAddressBar: false});
 - ori = @servers
 
 - @servers = @sponsored
