@@ -91,9 +91,6 @@
             %i.fa.fa-book
             &nbsp
             Blog
-        %li
-          %a{href: "reddit.com"}
-            %i.fa.fa-reddit
       %ul.nav.navbar-nav.navbar-right
         %li.dropdown
           %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
@@ -112,3 +109,9 @@
             - else
               %li= link_to 'Sign up', new_user_registration_path
               %li= link_to 'Login', new_user_session_path
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          %a.hidden-xs{href: "http://reddit.com/r/Unturned", class: "navbar-brand"}
+            %img.hidden-xs{src: "/reddit-logo.png"}
+          %a.hidden-xs{href: "http://twitter.com/UnturnedServerz", class: "navbar-brand"}
+            %img.hidden-xs{src: "/twitter-logo.png"}
