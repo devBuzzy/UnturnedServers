@@ -30,7 +30,8 @@
           %td.text-center{style: "width: 15%; vertical-align: middle; font-size: 18px;"}
             %strong= link_to server.title, server_path(server), class: "server"
           %td{style: "width: 40%;", class: "server-ip-#{server.id}"}
-            = link_to image_tag(server_banner_path(server)), server_path(server)
+            - if server.banner?
+              = link_to image_tag(server_banner_path(server)), server_path(server)
             %a{href: country_path(server.country), id: server.country, alt: server.country_name}
               %span=server.get_flag
             %span{class: "ip", style: "font-size: 18px; vertical-align: middle;", rel: "tooltip", title: "Click to copy to clipboard.", data: {placement: "top"}}

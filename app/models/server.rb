@@ -18,7 +18,6 @@ class Server
   validates :version, presence: true
   validates :slots, presence: true
   validates_numericality_of :slots
-  validates :banner, presence: true
 
   field :title, type: String, default: ""
   field :ip, type: String, default: ""
