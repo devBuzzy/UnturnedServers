@@ -14,7 +14,6 @@ class Server
   validates :ip, presence: true, uniqueness: true
   validates :port, presence: true
   validates_numericality_of :port
-  validates :info, presence: true
   validates :country, presence: true
   validates :version, presence: true
   validates :slots, presence: true
