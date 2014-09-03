@@ -19,19 +19,19 @@
   %script{:src => "http://w.sharethis.com/button/buttons.js", :type => "text/javascript"}
   :javascript
     stLight.options({publisher: "c2e6e60e-c42d-4a9b-a6c5-0ca8e2f39a96", doNotHash: false, doNotCopy: false, hashAddressBar: false});
-- ori = @servers
+/ - ori = @servers
 
-- @servers = @sponsored
-%h2 Sponsored Servers
-%hr
-= render 'partials/servers'
-- unless @servers.any?
-  #none 
-    Want to buy a slot?
-    %a{href: "#contact", "data-toggle" => 'modal'}
-      Contact us!
+/ - @servers = @sponsored
+/ %h2 Sponsored Servers
+/ %hr
+/ = render 'partials/servers'
+/ - unless @servers.any?
+/   #none 
+/     Want to buy a slot?
+/     %a{href: "#contact", "data-toggle" => 'modal'}
+/       Contact us!
 
-- @servers = ori
+/ - @servers = ori
 %h2 Unturned Servers
 %hr
 = render 'partials/servers'
