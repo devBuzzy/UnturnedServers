@@ -2,7 +2,7 @@
 - content_for :head do
   %meta{:content => "Unturned Server - #{@server.title}", :name => "description"}
   %meta{:content => "Servers, Unturned, Server, #{@server.tags.distinct(:text).join(", ")}", :name => "keywords"}
-  %meta{:content => "#{@server.user.username}", :name => "author"}
+  %meta{:content => "#{@server.user ? @server.user.username : 'Guest'}", :name => "author"}
 .page-header
   - if can_manage(@server)
     .pull-right
