@@ -1,5 +1,5 @@
 class ServersController < ApplicationController
-	before_filter :authenticate_user!, :except => [:index, :show, :banner, :embed, :display, :vote]
+	before_filter :authenticate_user!, :except => [:create, :new, :index, :show, :banner, :embed, :display, :vote]
 	def index
 		@sponsored = Server.where(:sponsored => true)
 		if @servers
@@ -88,7 +88,11 @@ class ServersController < ApplicationController
 	end
 
 	def new
-		@server = current_user.servers.new
+		if current_user
+			@server = current_user.servers.new
+		else
+			@server = Server.new
+		end
 	end
 
 	def edit
@@ -107,7 +111,11 @@ class ServersController < ApplicationController
 	end
 
 	def create
-		@server = current_user.servers.create(server_params)
+		if current_user
+			@server = current_user.servers.create(server_params)
+		else
+			@server = Server.create(server_params)
+		end
 		if @server.save
 			redirect_to servers_path, :notice => 'You successfully created a new server yet.'
 		else

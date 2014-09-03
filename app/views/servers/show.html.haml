@@ -133,7 +133,11 @@
             %td 
               %i.fa.fa-user
               Owner
-            %td= link_to @server.user.username, user_path(@server.user.username), class: 'no-deco'
+            %td
+              - if @server.user
+                = link_to @server.user.username, user_path(@server.user.username), class: 'no-deco'
+              - else
+                Guest
           %tr
             %td
               %i.fa.fa-location-arrow
